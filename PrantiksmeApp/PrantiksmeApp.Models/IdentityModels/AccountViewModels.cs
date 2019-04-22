@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace PrantiksmeApp.Models
+namespace PrantiksmeApp.Models.IdentityModels
 {
     public class ExternalLoginConfirmationViewModel
     {
