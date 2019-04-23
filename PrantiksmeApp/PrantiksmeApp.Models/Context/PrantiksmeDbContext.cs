@@ -20,7 +20,10 @@ namespace PrantiksmeApp.Models.Context
             ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 1080;
 
         }
-
+        public static PrantiksmeDbContext Create()
+        {
+            return new PrantiksmeDbContext();
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             
@@ -43,5 +46,5 @@ namespace PrantiksmeApp.Models.Context
 
         }
     }
-   
+    
 }

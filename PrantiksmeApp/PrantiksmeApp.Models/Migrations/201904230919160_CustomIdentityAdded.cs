@@ -3,7 +3,7 @@ namespace PrantiksmeApp.Models.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Identityadded : DbMigration
+    public partial class CustomIdentityAdded : DbMigration
     {
         public override void Up()
         {

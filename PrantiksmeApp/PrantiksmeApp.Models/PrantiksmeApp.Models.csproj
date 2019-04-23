@@ -129,9 +129,9 @@
     <Compile Include="IdentityModels\AccountViewModels.cs" />
     <Compile Include="IdentityModels\IdentityModels.cs" />
     <Compile Include="IdentityModels\ManageViewModels.cs" />
-    <Compile Include="Migrations\201904230554219_Identityadded.cs" />
-    <Compile Include="Migrations\201904230554219_Identityadded.Designer.cs">
-      <DependentUpon>201904230554219_Identityadded.cs</DependentUpon>
+    <Compile Include="Migrations\201904230919160_CustomIdentityAdded.cs" />
+    <Compile Include="Migrations\201904230919160_CustomIdentityAdded.Designer.cs">
+      <DependentUpon>201904230919160_CustomIdentityAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -152,8 +152,8 @@
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904230554219_Identityadded.resx">
-      <DependentUpon>201904230554219_Identityadded.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904230919160_CustomIdentityAdded.resx">
+      <DependentUpon>201904230919160_CustomIdentityAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

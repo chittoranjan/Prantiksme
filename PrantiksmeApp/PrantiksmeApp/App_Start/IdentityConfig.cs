@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using PrantiksmeApp.Models;
+using PrantiksmeApp.Models.Context;
 using PrantiksmeApp.Models.IdentityModels;
 
 namespace PrantiksmeApp
