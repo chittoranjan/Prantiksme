@@ -3,38 +3,38 @@ namespace PrantiksmeApp.Models.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class IdentityAdded : DbMigration
+    public partial class Identityadded : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.AspNetRoles",
+                "dbo.AppRoles",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
+                        Id = c.Long(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
             CreateTable(
-                "dbo.AspNetUserRoles",
+                "dbo.AppUserRoles",
                 c => new
                     {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
+                        UserId = c.Long(nullable: false),
+                        RoleId = c.Long(nullable: false),
                     })
                 .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AppRoles", t => t.RoleId)
+                .ForeignKey("dbo.AppUsers", t => t.UserId)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.AspNetUsers",
+                "dbo.AppUsers",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
+                        Id = c.Long(nullable: false, identity: true),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -51,49 +51,49 @@ namespace PrantiksmeApp.Models.Migrations
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
             
             CreateTable(
-                "dbo.AspNetUserClaims",
+                "dbo.AppUserClaims",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        UserId = c.String(nullable: false, maxLength: 128),
+                        UserId = c.Long(nullable: false),
                         ClaimType = c.String(),
                         ClaimValue = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AppUsers", t => t.UserId)
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.AspNetUserLogins",
+                "dbo.AppUserLogins",
                 c => new
                     {
-                        LoginProvider = c.String(nullable: false, maxLength: 128),
+                        UserId = c.Long(nullable: false),
                         ProviderKey = c.String(nullable: false, maxLength: 128),
-                        UserId = c.String(nullable: false, maxLength: 128),
+                        LoginProvider = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .PrimaryKey(t => new { t.UserId, t.ProviderKey, t.LoginProvider })
+                .ForeignKey("dbo.AppUsers", t => t.UserId)
                 .Index(t => t.UserId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropTable("dbo.AspNetUserLogins");
-            DropTable("dbo.AspNetUserClaims");
-            DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");
+            DropForeignKey("dbo.AppUserRoles", "UserId", "dbo.AppUsers");
+            DropForeignKey("dbo.AppUserLogins", "UserId", "dbo.AppUsers");
+            DropForeignKey("dbo.AppUserClaims", "UserId", "dbo.AppUsers");
+            DropForeignKey("dbo.AppUserRoles", "RoleId", "dbo.AppRoles");
+            DropIndex("dbo.AppUserLogins", new[] { "UserId" });
+            DropIndex("dbo.AppUserClaims", new[] { "UserId" });
+            DropIndex("dbo.AppUsers", "UserNameIndex");
+            DropIndex("dbo.AppUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AppUserRoles", new[] { "UserId" });
+            DropIndex("dbo.AppRoles", "RoleNameIndex");
+            DropTable("dbo.AppUserLogins");
+            DropTable("dbo.AppUserClaims");
+            DropTable("dbo.AppUsers");
+            DropTable("dbo.AppUserRoles");
+            DropTable("dbo.AppRoles");
         }
     }
 }

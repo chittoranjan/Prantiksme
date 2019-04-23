@@ -3,7 +3,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using PrantiksmeApp.Models.Context;
 
 namespace PrantiksmeApp.Models.IdentityModels
 {
@@ -35,7 +34,7 @@ namespace PrantiksmeApp.Models.IdentityModels
     public class CustomUserStore : UserStore<ApplicationUser, CustomRole, long,
         CustomUserLogin, CustomUserRole, CustomUserClaim>
     {
-        public CustomUserStore(ApplicationDbContext context)
+        public CustomUserStore(PrantiksmeDbContext context)
             : base(context)
         {
         }
@@ -43,16 +42,16 @@ namespace PrantiksmeApp.Models.IdentityModels
 
     public class CustomRoleStore : RoleStore<CustomRole, long, CustomUserRole>
     {
-        public CustomRoleStore(ApplicationDbContext context)
+        public CustomRoleStore(PrantiksmeDbContext context)
             : base(context)
         {
         }
     }
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, CustomRole,
+    public class PrantiksmeDbContext : IdentityDbContext<ApplicationUser, CustomRole,
         long, CustomUserLogin, CustomUserRole, CustomUserClaim>
     
     {
-        public ApplicationDbContext()
+        public PrantiksmeDbContext()
             : base("PrantiksmeDbContext")
         {
         }

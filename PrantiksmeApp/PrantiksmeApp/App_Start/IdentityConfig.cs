@@ -45,7 +45,7 @@ namespace PrantiksmeApp
             IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(
-                new CustomUserStore(context.Get<ApplicationDbContext>()));
+                new CustomUserStore(context.Get<PrantiksmeDbContext>()));
             // Configure validation logic for usernames 
             manager.UserValidator = new UserValidator<ApplicationUser, long>(manager)
             {

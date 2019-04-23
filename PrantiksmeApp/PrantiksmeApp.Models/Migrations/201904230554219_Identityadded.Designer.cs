@@ -7,13 +7,13 @@ namespace PrantiksmeApp.Models.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class IdentityAdded : IMigrationMetadata
+    public sealed partial class Identityadded : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(IdentityAdded));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Identityadded));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904221924363_IdentityAdded"; }
+            get { return "201904230554219_Identityadded"; }
         }
         
         string IMigrationMetadata.Source
