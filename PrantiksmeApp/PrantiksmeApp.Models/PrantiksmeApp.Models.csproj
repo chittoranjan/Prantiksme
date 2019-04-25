@@ -126,6 +126,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\PrantiksmeDbContext.cs" />
+    <Compile Include="Contracts\IDeletable.cs" />
+    <Compile Include="Contracts\IModel.cs" />
     <Compile Include="IdentityModels\AccountViewModels.cs" />
     <Compile Include="IdentityModels\IdentityModels.cs" />
     <Compile Include="IdentityModels\ManageViewModels.cs" />

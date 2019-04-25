@@ -70,6 +70,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,7 +83,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Base\" />
+    <ProjectReference Include="..\PrantiksmeApp.BLL.Contracts\PrantiksmeApp.BLL.Contracts.csproj">
+      <Project>{CA2AFA64-A81F-443F-8840-8DD3B756E046}</Project>
+      <Name>PrantiksmeApp.BLL.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrantiksmeApp.Models\PrantiksmeApp.Models.csproj">
+      <Project>{0B89D922-0896-4502-8A3F-198FBBA9BDBF}</Project>
+      <Name>PrantiksmeApp.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrantiksmeApp.Repository.Contracts\PrantiksmeApp.Repository.Contracts.csproj">
+      <Project>{C827F490-0600-4299-A8A1-2BD890103C46}</Project>
+      <Name>PrantiksmeApp.Repository.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

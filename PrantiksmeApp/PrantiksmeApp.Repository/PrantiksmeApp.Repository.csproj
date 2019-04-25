@@ -43,6 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -70,6 +76,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,7 +89,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Base\" />
+    <ProjectReference Include="..\PrantiksmeApp.Models\PrantiksmeApp.Models.csproj">
+      <Project>{0B89D922-0896-4502-8A3F-198FBBA9BDBF}</Project>
+      <Name>PrantiksmeApp.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrantiksmeApp.Repository.Contracts\PrantiksmeApp.Repository.Contracts.csproj">
+      <Project>{C827F490-0600-4299-A8A1-2BD890103C46}</Project>
+      <Name>PrantiksmeApp.Repository.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -70,6 +70,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,7 +83,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Base\" />
+    <ProjectReference Include="..\PrantiksmeApp.Models\PrantiksmeApp.Models.csproj">
+      <Project>{0B89D922-0896-4502-8A3F-198FBBA9BDBF}</Project>
+      <Name>PrantiksmeApp.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
