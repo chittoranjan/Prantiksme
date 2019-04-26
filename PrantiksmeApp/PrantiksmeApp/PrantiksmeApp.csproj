@@ -283,16 +283,16 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PrantiksmeApp.Models\PrantiksmeApp.Models.csproj">
-      <Project>{0b89d922-0896-4502-8a3f-198fbba9bdbf}</Project>
-      <Name>PrantiksmeApp.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PrantiksmeApp.Models1\PrantiksmeApp.Models.csproj">
+      <Project>{19D2EFD8-25B9-4A0D-B1A5-1665C8508999}</Project>
+      <Name>PrantiksmeApp.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
