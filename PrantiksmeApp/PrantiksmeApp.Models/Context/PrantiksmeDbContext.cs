@@ -37,8 +37,7 @@ namespace PrantiksmeApp.Models.Context
             modelBuilder.Entity<CustomUserRole>().ToTable("AppUserRoles");
             modelBuilder.Entity<CustomUserLogin>().HasKey(c => new { c.UserId, c.ProviderKey, c.LoginProvider }).ToTable("AppUserLogins");
             modelBuilder.Entity<CustomUserClaim>().ToTable("AppUserClaims");
-
-
+            
             modelBuilder.Entity<ApplicationUser>().HasKey(c => c.Id);
             modelBuilder.Entity<ApplicationUser>().Property(c => c.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
