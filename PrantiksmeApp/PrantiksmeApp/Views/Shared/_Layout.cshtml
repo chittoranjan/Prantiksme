@@ -8,7 +8,10 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <!--Layout style start-->
     <link rel="stylesheet" href="~/assets/css/main.css" />
+    <!--Layout style end-->
     @RenderSection("styles", required: false)
 
 </head>
@@ -97,7 +100,7 @@
             <div class="post">
                 @RenderBody()
             </div>
-           
+
         </div>
 
 
@@ -115,19 +118,24 @@
 
     </div>
 
-<!-- Scripts -->
+    <!-- Scripts -->
 
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
 
-    <script src="~/assets/js/jquery.min.js"></script>
+    <!--Layout script start-->
+    @*<script src="~/assets/js/jquery.min.js"></script>*@
     <script src="~/assets/js/browser.min.js"></script>
     <script src="~/assets/js/breakpoints.min.js"></script>
     <script src="~/assets/js/util.js"></script>
     <script src="~/assets/js/main.js"></script>
-
+    <!--Layout script end-->
 
     @RenderSection("scripts", required: false)
+
 </body>
 @*<body>
         <div class="navbar navbar-inverse navbar-fixed-top">
