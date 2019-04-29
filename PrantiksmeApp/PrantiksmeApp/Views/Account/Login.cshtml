@@ -29,25 +29,25 @@
                         </div>
                     </div>
 
-                    <div class="form-group row ">
+                    <div class="form-group">
                         @Html.LabelFor(m => m.RememberMe, "Remember?", new { @class = "col-md-2 control-label" })
                         <div class="col-md-8">
                             <!-- For Togle Switch: Need Install "Bootstrap-Toggle-Master" Package-->
-                            @Html.CheckBoxFor(m => m.RememberMe, new { @id = "rememberMeCheckBox", @data_toggle = "toggle" })
+                            @Html.CheckBoxFor(m => m.RememberMe, new { @id = "rememberMeCheckBox", @data_toggle = "toggle",@data_on="Yes" ,@data_off="No"})
                             @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     @*<div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <div class="checkbox">
-                                @Html.CheckBoxFor(m => m.RememberMe,new{id="rememberMeCheckBox", @data_toggle = "toggle" })
+                                @Html.CheckBoxFor(m => m.RememberMe)
                                 @Html.LabelFor(m => m.RememberMe)
                             </div>
                         </div>
                     </div>*@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Log in" class="btn btn-default" />
+                            <input type="submit" value="Log in" class="btn btn-success" />
                             @Html.ActionLink("Cancel", "Login", "Account", null, new { @class = "btn btn-danger" })
                         </div>
                     </div>

@@ -1854,7 +1854,7 @@ input, select, textarea {
 
 /* Button */
 
-	input[type="submit"],
+	/*input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
 	button,
@@ -1884,15 +1884,17 @@ input, select, textarea {
 		text-decoration: none;
 		text-transform: uppercase;
 		white-space: nowrap;
-	}
+	}*/
 
 		input[type="submit"]:hover,
 		input[type="reset"]:hover,
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			box-shadow: inset 0 0 0 1px #2ebaae;
-			color: #2ebaae !important;
+			/*box-shadow: inset 0 0 0 1px #2ebaae;
+			color: #2ebaae !important;*/
+            box-shadow: #b8860b;
+            color: #b8860b;
 		}
 
 			input[type="submit"]:hover:active,
@@ -2039,7 +2041,8 @@ input, select, textarea {
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
-		background: rgba(160, 160, 160, 0.075);
+		/*background: rgba(160, 160, 160, 0.075);*/
+        background: #fff;
 		border: none;
 		border: solid 1px rgba(160, 160, 160, 0.3);
 		border-radius: 0;

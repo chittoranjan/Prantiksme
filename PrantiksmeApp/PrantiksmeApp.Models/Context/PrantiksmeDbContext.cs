@@ -14,6 +14,9 @@ namespace PrantiksmeApp.Models.Context
 {
     public class PrantiksmeDbContext:IdentityDbContext<ApplicationUser, CustomRole, long, CustomUserLogin, CustomUserRole, CustomUserClaim>
     {
+
+
+        #region DbContext Releted
         public PrantiksmeDbContext() : base("PrantiksmeDbContext")
         {
             Configuration.LazyLoadingEnabled = true;
@@ -27,7 +30,7 @@ namespace PrantiksmeApp.Models.Context
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
+
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
@@ -37,7 +40,7 @@ namespace PrantiksmeApp.Models.Context
             modelBuilder.Entity<CustomUserRole>().ToTable("AppUserRoles");
             modelBuilder.Entity<CustomUserLogin>().HasKey(c => new { c.UserId, c.ProviderKey, c.LoginProvider }).ToTable("AppUserLogins");
             modelBuilder.Entity<CustomUserClaim>().ToTable("AppUserClaims");
-            
+
             modelBuilder.Entity<ApplicationUser>().HasKey(c => c.Id);
             modelBuilder.Entity<ApplicationUser>().Property(c => c.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
@@ -45,6 +48,21 @@ namespace PrantiksmeApp.Models.Context
             modelBuilder.Entity<CustomRole>().Property(c => c.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
         }
+
+
+        #endregion
+
+        #region EntityModels Releted
+
+
+
+        #endregion
+
+        #region Reports Releted
+
+        
+
+        #endregion
     }
     
 }
