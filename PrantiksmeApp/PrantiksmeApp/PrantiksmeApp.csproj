@@ -199,8 +199,12 @@
     <Content Include="assets\js\util.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-toggle.css" />
+    <Content Include="Content\bootstrap-toggle.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap2-toggle.css" />
+    <Content Include="Content\bootstrap2-toggle.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -221,8 +225,12 @@
     <Content Include="images\pic10.jpg" />
     <Content Include="images\pic11.jpg" />
     <Content Include="images\pic12.jpg" />
+    <Content Include="Scripts\bootstrap-toggle.js" />
+    <Content Include="Scripts\bootstrap-toggle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap2-toggle.js" />
+    <Content Include="Scripts\bootstrap2-toggle.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -277,6 +285,8 @@
     <Content Include="assets\sass\libs\_vars.scss" />
     <Content Include="assets\sass\libs\_vendor.scss" />
     <Content Include="assets\sass\main.scss" />
+    <Content Include="Scripts\bootstrap2-toggle.min.js.map" />
+    <Content Include="Scripts\bootstrap-toggle.min.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

@@ -28,27 +28,37 @@
                             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                    <div class="form-group">
+
+                    <div class="form-group row ">
+                        @Html.LabelFor(m => m.RememberMe, "Remember?", new { @class = "col-md-2 control-label" })
+                        <div class="col-md-8">
+                            <!-- For Togle Switch: Need Install "Bootstrap-Toggle-Master" Package-->
+                            @Html.CheckBoxFor(m => m.RememberMe, new { @id = "rememberMeCheckBox", @data_toggle = "toggle" })
+                            @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @*<div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <div class="checkbox">
-                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.CheckBoxFor(m => m.RememberMe,new{id="rememberMeCheckBox", @data_toggle = "toggle" })
                                 @Html.LabelFor(m => m.RememberMe)
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="submit" value="Log in" class="btn btn-default" />
                             @Html.ActionLink("Cancel", "Login", "Account", null, new { @class = "btn btn-danger" })
                         </div>
                     </div>
-                    <p>
+
+                    @*<p>
                         @Html.ActionLink("Register as a new user", "Register")
-                    </p>
+                    </p>*@
                     @* Enable this once you have account confirmation enabled for password reset functionality*@
-                    <p>
+                    @*<p>
                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>
+                    </p>*@
                 }
             </section>
         </div>
