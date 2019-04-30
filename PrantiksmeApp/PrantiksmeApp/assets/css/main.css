@@ -1895,6 +1895,7 @@ input, select, textarea {
 			color: #2ebaae !important;*/
             box-shadow: #b8860b;
             color: #b8860b;
+           
 		}
 
 			input[type="submit"]:hover:active,
@@ -3519,7 +3520,7 @@ input, select, textarea {
 		right: 0;
 		top: 0;
 		visibility: hidden;
-		width: 25em;
+		width: 20em;
 		z-index: 10002;
 	}
 
