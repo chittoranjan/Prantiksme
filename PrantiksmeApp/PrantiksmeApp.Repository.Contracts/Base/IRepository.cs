@@ -8,7 +8,7 @@ using PrantiksmeApp.Models.Contracts;
 
 namespace PrantiksmeApp.Repository.Contracts.Base
 {
-    public interface IRepository<T> : IDisposable where T : class, IEntityModel
+    public interface IRepository<T> : IDisposable where T : class, IModel
     {
         bool Add(T entity);
         bool Update(T entity);

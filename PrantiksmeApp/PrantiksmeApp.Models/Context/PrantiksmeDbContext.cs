@@ -7,12 +7,16 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
+using PrantiksmeApp.Models.EntityModels;
+using PrantiksmeApp.Models.EntityModels.ProductModels;
+using PrantiksmeApp.Models.EntityModels.PurchaseModels;
+using PrantiksmeApp.Models.EntityModels.SalesModels;
 using PrantiksmeApp.Models.IdentityModels;
 using PrantiksmeApp.Models.Migrations;
 
 namespace PrantiksmeApp.Models.Context
 {
-    public class PrantiksmeDbContext:IdentityDbContext<ApplicationUser, CustomRole, long, CustomUserLogin, CustomUserRole, CustomUserClaim>
+    public class PrantiksmeDbContext : IdentityDbContext<ApplicationUser, CustomRole, long, CustomUserLogin, CustomUserRole, CustomUserClaim>
     {
 
 
@@ -54,15 +58,33 @@ namespace PrantiksmeApp.Models.Context
 
         #region EntityModels Releted
 
+        public DbSet<SalesStore> SalesStores { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Gender> Genders { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+
+        
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<ProductSubCategory> ProductSubCategories { get; set; }
+        public DbSet<ProductItem> ProductItems { get; set; }
+        
+        
+        public DbSet<Purchase> Purchases { get; set; }
+        public DbSet<PurchaseDetails> PurchaseDetailses { get; set; }
+        public DbSet<StockSummary> StockSummaries { get; set; }
+
+        public DbSet<Sales> Saleses { get; set; }
+        public DbSet<SalesDetails> SalesDetailses { get; set; }
+        public DbSet<SalesSummary> SalesSummaries { get; set; }
 
 
         #endregion
 
         #region Reports Releted
 
-        
+
 
         #endregion
     }
-    
+
 }

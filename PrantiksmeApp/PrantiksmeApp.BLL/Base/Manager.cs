@@ -6,7 +6,7 @@ using PrantiksmeApp.Repository.Contracts.Base;
 
 namespace PrantiksmeApp.BLL.Base
 {
-    public abstract class BaseManager<T>:IManager<T> where T:class,IEntityModel
+    public abstract class BaseManager<T>:IManager<T> where T:class,IModel
     {
         protected IRepository<T> _repository;
 

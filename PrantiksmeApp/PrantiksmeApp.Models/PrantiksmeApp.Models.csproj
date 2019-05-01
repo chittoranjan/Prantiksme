@@ -85,14 +85,45 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\PrantiksmeDbContext.cs" />
+    <Compile Include="Contracts\IAuditable.cs" />
+    <Compile Include="Contracts\IAutoCode.cs" />
     <Compile Include="Contracts\IDeletable.cs" />
     <Compile Include="Contracts\IModel.cs" />
+    <Compile Include="EntityModels\Customer.cs" />
+    <Compile Include="EntityModels\ProductModels\ProductCategory.cs" />
+    <Compile Include="EntityModels\Employee.cs" />
+    <Compile Include="EntityModels\Gender.cs" />
+    <Compile Include="EntityModels\ProductModels\ProductItem.cs" />
+    <Compile Include="EntityModels\ProductModels\ProductSubCategory.cs" />
+    <Compile Include="EntityModels\PurchaseModels\Purchase.cs" />
+    <Compile Include="EntityModels\PurchaseModels\PurchaseDetails.cs" />
+    <Compile Include="EntityModels\PurchaseModels\StockSummary.cs" />
+    <Compile Include="EntityModels\SalesModels\Sales.cs" />
+    <Compile Include="EntityModels\SalesModels\SalesDetails.cs" />
+    <Compile Include="EntityModels\SalesModels\SalesSummary.cs" />
+    <Compile Include="EntityModels\SalesStore.cs" />
     <Compile Include="IdentityModels\AccountViewModels.cs" />
     <Compile Include="IdentityModels\IdentityModels.cs" />
     <Compile Include="IdentityModels\ManageViewModels.cs" />
     <Compile Include="Migrations\201904230919160_CustomIdentityAdded.cs" />
     <Compile Include="Migrations\201904230919160_CustomIdentityAdded.Designer.cs">
       <DependentUpon>201904230919160_CustomIdentityAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905011609489_SalesStore_Employee_Gender_Model_Added.cs" />
+    <Compile Include="Migrations\201905011609489_SalesStore_Employee_Gender_Model_Added.Designer.cs">
+      <DependentUpon>201905011609489_SalesStore_Employee_Gender_Model_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905011615096_ProductCategory_ProductSubCategory_ProductItem_Model_Added.cs" />
+    <Compile Include="Migrations\201905011615096_ProductCategory_ProductSubCategory_ProductItem_Model_Added.Designer.cs">
+      <DependentUpon>201905011615096_ProductCategory_ProductSubCategory_ProductItem_Model_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905011733227_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.cs" />
+    <Compile Include="Migrations\201905011733227_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.Designer.cs">
+      <DependentUpon>201905011733227_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905011758599_Sales_SalesDetails_SalesSummary_Model_Added.cs" />
+    <Compile Include="Migrations\201905011758599_Sales_SalesDetails_SalesSummary_Model_Added.Designer.cs">
+      <DependentUpon>201905011758599_Sales_SalesDetails_SalesSummary_Model_Added.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,9 +133,20 @@
     <EmbeddedResource Include="Migrations\201904230919160_CustomIdentityAdded.resx">
       <DependentUpon>201904230919160_CustomIdentityAdded.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905011609489_SalesStore_Employee_Gender_Model_Added.resx">
+      <DependentUpon>201905011609489_SalesStore_Employee_Gender_Model_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905011615096_ProductCategory_ProductSubCategory_ProductItem_Model_Added.resx">
+      <DependentUpon>201905011615096_ProductCategory_ProductSubCategory_ProductItem_Model_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905011733227_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.resx">
+      <DependentUpon>201905011733227_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905011758599_Sales_SalesDetails_SalesSummary_Model_Added.resx">
+      <DependentUpon>201905011758599_Sales_SalesDetails_SalesSummary_Model_Added.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EntityModels\" />
     <Folder Include="Enums\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>

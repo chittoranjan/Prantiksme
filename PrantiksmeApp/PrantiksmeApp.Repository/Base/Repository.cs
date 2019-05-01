@@ -8,7 +8,7 @@ using PrantiksmeApp.Repository.Contracts.Base;
 
 namespace PrantiksmeApp.Repository.Base
 {
-    public abstract class Repository<T>:IRepository<T>  where T :class,IEntityModel
+    public abstract class Repository<T>:IRepository<T>  where T :class,IModel
     {
         protected DbContext db;
 
@@ -84,7 +84,7 @@ namespace PrantiksmeApp.Repository.Base
     }
 
 
-    public abstract class DeleteableRepository<T> : Repository<T> where T : class, IDeletable,IEntityModel
+    public abstract class DeleteableRepository<T> : Repository<T> where T : class, IDeletable,IModel
     {
         public override ICollection<T> GetAll(bool withDeleted = false)
         {

@@ -1,6 +1,6 @@
 ﻿namespace PrantiksmeApp.Models.Contracts
 {
-    public interface IEntityModel
+    public interface IModel
     {
         long Id { get; set; }
     }

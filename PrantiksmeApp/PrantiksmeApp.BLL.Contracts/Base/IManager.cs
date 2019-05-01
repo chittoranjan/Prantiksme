@@ -4,7 +4,7 @@ using PrantiksmeApp.Models.Contracts;
 
 namespace PrantiksmeApp.BLL.Contracts.Base
 {
-    public interface IManager<T>:IDisposable where T:class,IEntityModel
+    public interface IManager<T>:IDisposable where T:class,IModel
     {
         bool Add(T entity);
         bool Update(T entity);
