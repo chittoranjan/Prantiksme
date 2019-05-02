@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Manager.cs" />
+    <Compile Include="CustomerManager.cs" />
+    <Compile Include="EmployeeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalesStoreManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PrantiksmeApp.BLL.Contracts\PrantiksmeApp.BLL.Contracts.csproj">

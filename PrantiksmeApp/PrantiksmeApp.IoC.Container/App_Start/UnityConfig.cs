@@ -1,6 +1,10 @@
 using PrantiksmeApp.Models.Context;
 using System;
 using System.Data.Entity;
+using PrantiksmeApp.BLL;
+using PrantiksmeApp.BLL.Contracts;
+using PrantiksmeApp.Repository;
+using PrantiksmeApp.Repository.Contracts;
 using Unity;
 using Unity.ObjectBuilder.BuildPlan.DynamicMethod;
 
@@ -46,6 +50,15 @@ namespace PrantiksmeApp.IoC.Container
             // container.RegisterType<IProductRepository, ProductRepository>();
 
             container.RegisterType<DbContext, PrantiksmeDbContext>();
+
+            container.RegisterType<ISalesStoreManager, SalesStoreManager>();
+            container.RegisterType<ISalesStoreRepository, SalesStoreRepository>();
+
+            container.RegisterType<IEmployeeManager, EmployeeManager>();
+            container.RegisterType<IEmployeeRepository, EmployeeRepository>();
+
+            container.RegisterType<ICustomerManager, CustomerManager>();
+            container.RegisterType<ICustomerRepository, CustomerRepository>();
         }
     }
 }

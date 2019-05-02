@@ -6,16 +6,16 @@ using PrantiksmeApp.Repository.Contracts.Base;
 
 namespace PrantiksmeApp.BLL.Base
 {
-    public abstract class BaseManager<T>:IManager<T> where T:class,IModel
+    public abstract class Manager<T>:IManager<T> where T:class,IModel
     {
         protected IRepository<T> _repository;
 
-        public BaseManager(IRepository<T> repository)
+        protected Manager(IRepository<T> repository)
         {
             _repository = repository;
         }
 
-
+        
         public virtual bool Add(T entity)
         {
             return _repository.Add(entity);

@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\IManager.cs" />
+    <Compile Include="ICustomerManager.cs" />
+    <Compile Include="IEmployeeManager.cs" />
+    <Compile Include="ISalesStoreManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

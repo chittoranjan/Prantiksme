@@ -12,7 +12,7 @@ namespace PrantiksmeApp.Repository.Base
     {
         protected DbContext db;
 
-        public Repository(DbContext db)
+        protected Repository(DbContext db)
         {
             this.db = db;
         }
@@ -86,13 +86,12 @@ namespace PrantiksmeApp.Repository.Base
 
     public abstract class DeleteableRepository<T> : Repository<T> where T : class, IDeletable,IModel
     {
+        protected DeleteableRepository(DbContext db) : base(db)
+        {
+        }
         public override ICollection<T> GetAll(bool withDeleted = false)
         {
             return db.Set<T>().Where(c => c.IsDeleted == false || c.IsDeleted == withDeleted).ToList();
-        }
-
-        protected DeleteableRepository(DbContext db) : base(db)
-        {
         }
     }
 }
