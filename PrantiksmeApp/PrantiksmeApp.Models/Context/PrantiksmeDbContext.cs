@@ -70,11 +70,11 @@ namespace PrantiksmeApp.Models.Context
         
         
         public DbSet<Purchase> Purchases { get; set; }
-        public DbSet<PurchaseDetails> PurchaseDetailses { get; set; }
+        public DbSet<PurchaseDetails> PurchaseDetails { get; set; }
         public DbSet<StockSummary> StockSummaries { get; set; }
 
-        public DbSet<Sales> Saleses { get; set; }
-        public DbSet<SalesDetails> SalesDetailses { get; set; }
+        public DbSet<Sales> Sales { get; set; }
+        public DbSet<SalesDetails> SalesDetails { get; set; }
         public DbSet<SalesSummary> SalesSummaries { get; set; }
 
 

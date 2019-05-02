@@ -8,6 +8,24 @@ namespace PrantiksmeApp.Models.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Sales",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        Description = c.String(),
+                        SalesDate = c.DateTime(nullable: false),
+                        SalesStoreId = c.Long(nullable: false),
+                        UniversalCode = c.String(nullable: false),
+                        CreatedOn = c.DateTime(nullable: false),
+                        CreatedBy = c.Long(nullable: false),
+                        ModifiedOn = c.DateTime(),
+                        ModifiedBy = c.Long(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.SalesStores", t => t.SalesStoreId)
+                .Index(t => t.SalesStoreId);
+            
+            CreateTable(
                 "dbo.SalesDetails",
                 c => new
                     {
@@ -33,24 +51,6 @@ namespace PrantiksmeApp.Models.Migrations
                 .Index(t => t.ProductCategoryId)
                 .Index(t => t.ProductSubCategoryId)
                 .Index(t => t.ProductItemId);
-            
-            CreateTable(
-                "dbo.Sales",
-                c => new
-                    {
-                        Id = c.Long(nullable: false, identity: true),
-                        Description = c.String(),
-                        SalesDate = c.DateTime(nullable: false),
-                        SalesStoreId = c.Long(nullable: false),
-                        UniversalCode = c.String(nullable: false),
-                        CreatedOn = c.DateTime(nullable: false),
-                        CreatedBy = c.Long(nullable: false),
-                        ModifiedOn = c.DateTime(),
-                        ModifiedBy = c.Long(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.SalesStores", t => t.SalesStoreId)
-                .Index(t => t.SalesStoreId);
             
             CreateTable(
                 "dbo.SalesSummaries",
@@ -89,22 +89,22 @@ namespace PrantiksmeApp.Models.Migrations
             DropForeignKey("dbo.SalesSummaries", "ProductItemId", "dbo.ProductItems");
             DropForeignKey("dbo.SalesSummaries", "ProductCategoryId", "dbo.ProductCategories");
             DropForeignKey("dbo.SalesDetails", "SalesId", "dbo.Sales");
-            DropForeignKey("dbo.Sales", "SalesStoreId", "dbo.SalesStores");
             DropForeignKey("dbo.SalesDetails", "ProductSubCategoryId", "dbo.ProductSubCategories");
             DropForeignKey("dbo.SalesDetails", "ProductItemId", "dbo.ProductItems");
             DropForeignKey("dbo.SalesDetails", "ProductCategoryId", "dbo.ProductCategories");
+            DropForeignKey("dbo.Sales", "SalesStoreId", "dbo.SalesStores");
             DropIndex("dbo.SalesSummaries", new[] { "SalesStoreId" });
             DropIndex("dbo.SalesSummaries", new[] { "ProductItemId" });
             DropIndex("dbo.SalesSummaries", new[] { "ProductSubCategoryId" });
             DropIndex("dbo.SalesSummaries", new[] { "ProductCategoryId" });
-            DropIndex("dbo.Sales", new[] { "SalesStoreId" });
             DropIndex("dbo.SalesDetails", new[] { "ProductItemId" });
             DropIndex("dbo.SalesDetails", new[] { "ProductSubCategoryId" });
             DropIndex("dbo.SalesDetails", new[] { "ProductCategoryId" });
             DropIndex("dbo.SalesDetails", new[] { "SalesId" });
+            DropIndex("dbo.Sales", new[] { "SalesStoreId" });
             DropTable("dbo.SalesSummaries");
-            DropTable("dbo.Sales");
             DropTable("dbo.SalesDetails");
+            DropTable("dbo.Sales");
         }
     }
 }

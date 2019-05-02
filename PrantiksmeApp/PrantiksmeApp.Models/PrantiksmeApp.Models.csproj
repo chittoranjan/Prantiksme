@@ -117,13 +117,13 @@
     <Compile Include="Migrations\201905011615096_ProductCategory_ProductSubCategory_ProductItem_Model_Added.Designer.cs">
       <DependentUpon>201905011615096_ProductCategory_ProductSubCategory_ProductItem_Model_Added.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905011733227_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.cs" />
-    <Compile Include="Migrations\201905011733227_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.Designer.cs">
-      <DependentUpon>201905011733227_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.cs</DependentUpon>
+    <Compile Include="Migrations\201905020817407_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.cs" />
+    <Compile Include="Migrations\201905020817407_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.Designer.cs">
+      <DependentUpon>201905020817407_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905011758599_Sales_SalesDetails_SalesSummary_Model_Added.cs" />
-    <Compile Include="Migrations\201905011758599_Sales_SalesDetails_SalesSummary_Model_Added.Designer.cs">
-      <DependentUpon>201905011758599_Sales_SalesDetails_SalesSummary_Model_Added.cs</DependentUpon>
+    <Compile Include="Migrations\201905020819343_Sales_SalesDetails_SalesSummary_Model_Added.cs" />
+    <Compile Include="Migrations\201905020819343_Sales_SalesDetails_SalesSummary_Model_Added.Designer.cs">
+      <DependentUpon>201905020819343_Sales_SalesDetails_SalesSummary_Model_Added.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -139,11 +139,11 @@
     <EmbeddedResource Include="Migrations\201905011615096_ProductCategory_ProductSubCategory_ProductItem_Model_Added.resx">
       <DependentUpon>201905011615096_ProductCategory_ProductSubCategory_ProductItem_Model_Added.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905011733227_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.resx">
-      <DependentUpon>201905011733227_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905020817407_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.resx">
+      <DependentUpon>201905020817407_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905011758599_Sales_SalesDetails_SalesSummary_Model_Added.resx">
-      <DependentUpon>201905011758599_Sales_SalesDetails_SalesSummary_Model_Added.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905020819343_Sales_SalesDetails_SalesSummary_Model_Added.resx">
+      <DependentUpon>201905020819343_Sales_SalesDetails_SalesSummary_Model_Added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

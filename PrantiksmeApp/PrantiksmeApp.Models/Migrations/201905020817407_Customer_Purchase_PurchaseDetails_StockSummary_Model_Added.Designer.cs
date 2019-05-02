@@ -13,7 +13,7 @@ namespace PrantiksmeApp.Models.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201905011733227_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added"; }
+            get { return "201905020817407_Customer_Purchase_PurchaseDetails_StockSummary_Model_Added"; }
         }
         
         string IMigrationMetadata.Source
