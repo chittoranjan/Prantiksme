@@ -3,7 +3,27 @@
 @{
     ViewBag.Title = "Error";
 }
+<div class="post postdiv">
+    <header class="headerdiv">
+        <div class="title titlediv">
+            <h2><span><a><i class="glyphicon glyphicon-hand-right"></i></a>&nbsp;</span><a href="#">Error</a></h2>
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+        </div>
+        <div class="meta metadiv">
+            <div class="row metarow">
+                <a href="#" title="User" data-toggle=""><i class="fa fa-user"></i></a>
+                <a href="#" title="Search" data-toggle=""><i class="fa fa-search"></i></a>
+                <a href="#" title="Setting" data-toggle=""><i class="fa fa-gear"></i></a>
+                <a href="#divCollapse" title="Collapse" data-toggle="collapse"><i class="fa fa-angle-double-down"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <div id="divCollapse" class="collapse in text-justify maindiv ">
+        <h1 class="text-danger">Error.</h1>
+        <h2 class="text-danger">An error occurred while processing your request.</h2>
+    </div>
+
+</div>
+
 

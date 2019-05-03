@@ -3,8 +3,28 @@
 @{
     ViewBag.Title = "Locked Out";
 }
+<div class="post postdiv">
+    <header class="headerdiv">
+        <div class="title titlediv">
+            <h2><span><a><i class="glyphicon glyphicon-hand-right"></i></a>&nbsp;</span><a href="#">Locked Out</a></h2>
 
-<hgroup>
-    <h1 class="text-danger">Locked out.</h1>
-    <h2 class="text-danger">This account has been locked out, please try again later.</h2>
-</hgroup>
+        </div>
+        <div class="meta metadiv">
+            <div class="row metarow">
+                <a href="#" title="User" data-toggle=""><i class="fa fa-user"></i></a>
+                <a href="#" title="Search" data-toggle=""><i class="fa fa-search"></i></a>
+                <a href="#" title="Setting" data-toggle=""><i class="fa fa-gear"></i></a>
+                <a href="#divCollapse" title="Collapse" data-toggle="collapse"><i class="fa fa-angle-double-down"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <div id="divCollapse" class="collapse in text-justify maindiv ">
+        <hgroup>
+            <h1 class="text-danger">Locked out.</h1>
+            <h2 class="text-danger">This account has been locked out, please try again later.</h2>
+        </hgroup>
+    </div>
+
+</div>
+
