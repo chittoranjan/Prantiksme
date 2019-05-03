@@ -3,3 +3,44 @@
 .btn-size {
     width: 75px;
 }
+
+
+.postdiv {
+    border: 1px solid #015B02;
+    background-color: #ffffff !important;
+}
+
+.maindiv h3, h4, h5, h6 {
+    margin: 0 0 -2em 0;
+}
+
+.headerdiv {
+    border-bottom: 1px solid #015B02 !important;
+    background: #297734 /*#2e8b57*/;
+}
+
+.titlediv {
+    padding: .25em 3em .25em 3em !important;
+}
+
+    .titlediv h2 {
+        font-size: 16px !important;
+        font-family: "Raleway", Helvetica, sans-serif;
+        font-weight: 500 !important;
+        text-transform: uppercase;
+        color: #ffffff !important;
+    }
+
+.metadiv {
+    padding: .25em 1em .25em 1em !important;
+    border-left-color: #015B02 !important;
+}
+
+.metarow {
+    color: #ffffff;
+    float: right;
+}
+
+    .metarow a {
+        border: none !important;
+    }

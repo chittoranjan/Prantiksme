@@ -26,5 +26,10 @@ namespace PrantiksmeApp.Controllers
 
             return View();
         }
+
+        public ActionResult Demo()
+        {
+            return View();
+        }
     }
 }
