@@ -62,6 +62,7 @@ namespace PrantiksmeApp.Models.Context
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public  DbSet<AppUserType> AppUserTypes{ get; set; }
 
         
         public DbSet<ProductCategory> ProductCategories { get; set; }
@@ -76,6 +77,7 @@ namespace PrantiksmeApp.Models.Context
         public DbSet<Sales> Sales { get; set; }
         public DbSet<SalesDetails> SalesDetails { get; set; }
         public DbSet<SalesSummary> SalesSummaries { get; set; }
+
 
 
         #endregion

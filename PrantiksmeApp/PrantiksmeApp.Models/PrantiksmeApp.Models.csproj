@@ -89,6 +89,7 @@
     <Compile Include="Contracts\IAutoCode.cs" />
     <Compile Include="Contracts\IDeletable.cs" />
     <Compile Include="Contracts\IModel.cs" />
+    <Compile Include="EntityModels\AppUserType.cs" />
     <Compile Include="EntityModels\Customer.cs" />
     <Compile Include="EntityModels\ProductModels\ProductCategory.cs" />
     <Compile Include="EntityModels\Employee.cs" />
@@ -102,6 +103,8 @@
     <Compile Include="EntityModels\SalesModels\SalesDetails.cs" />
     <Compile Include="EntityModels\SalesModels\SalesSummary.cs" />
     <Compile Include="EntityModels\SalesStore.cs" />
+    <Compile Include="Enums\GenderEnum.cs" />
+    <Compile Include="Enums\RoleEnum.cs" />
     <Compile Include="IdentityModels\AccountViewModels.cs" />
     <Compile Include="IdentityModels\IdentityModels.cs" />
     <Compile Include="IdentityModels\ManageViewModels.cs" />
@@ -129,6 +132,18 @@
     <Compile Include="Migrations\201905020841214_SeedData_For_Gender.Designer.cs">
       <DependentUpon>201905020841214_SeedData_For_Gender.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905050527583_AppUserType_Model_Added.cs" />
+    <Compile Include="Migrations\201905050527583_AppUserType_Model_Added.Designer.cs">
+      <DependentUpon>201905050527583_AppUserType_Model_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905050529592_SeedData_For_AppUserType.cs" />
+    <Compile Include="Migrations\201905050529592_SeedData_For_AppUserType.Designer.cs">
+      <DependentUpon>201905050529592_SeedData_For_AppUserType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905050544558_SeedData_For_Role.cs" />
+    <Compile Include="Migrations\201905050544558_SeedData_For_Role.Designer.cs">
+      <DependentUpon>201905050544558_SeedData_For_Role.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilitys\Utility.cs" />
@@ -153,12 +168,20 @@
     <EmbeddedResource Include="Migrations\201905020841214_SeedData_For_Gender.resx">
       <DependentUpon>201905020841214_SeedData_For_Gender.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905050527583_AppUserType_Model_Added.resx">
+      <DependentUpon>201905050527583_AppUserType_Model_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905050529592_SeedData_For_AppUserType.resx">
+      <DependentUpon>201905050529592_SeedData_For_AppUserType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905050544558_SeedData_For_Role.resx">
+      <DependentUpon>201905050544558_SeedData_For_Role.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Enums\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
+    <Compile Include="Enums\AppUserTypeEnum.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
