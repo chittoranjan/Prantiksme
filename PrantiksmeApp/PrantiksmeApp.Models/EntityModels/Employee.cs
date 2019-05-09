@@ -27,6 +27,14 @@ namespace PrantiksmeApp.Models.EntityModels
         [RegularExpression(@"^(\d{11})$", ErrorMessage = "Contact Number Is Not Valid, Required '11' Digits.")]
         public string ContactNo { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime? DateOfBirth { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime? JoiningDate { get; set; }
+
         [RegularExpression(@"^((\d{17})|(\d{10}))$", ErrorMessage = "NID No Is Not Valid, Required '10 Or 17' Digit.")]
         public string NIDNo { get; set; }
 
@@ -45,7 +53,7 @@ namespace PrantiksmeApp.Models.EntityModels
         [ForeignKey("AppUser")]
         public long AppUserId { get; set; }
 
-        [Required(ErrorMessage = "Gender Id Is Required.")]
+        [Required(ErrorMessage = "Gender Is Required.")]
         public int GenderId { get; set; }
 
         [Required(ErrorMessage = "Code Is Required.")]
@@ -56,6 +64,7 @@ namespace PrantiksmeApp.Models.EntityModels
         public long CreatedBy { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public long? ModifiedBy { get; set; }
+
         public bool IsDeleted { get; set; }
         public bool Delete()
         {

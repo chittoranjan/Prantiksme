@@ -33,6 +33,20 @@ namespace PrantiksmeApp.Models.ViewModels
         [Remote("IsContactNoExist", "Home", ErrorMessage = "Contact No Already Exist.", AdditionalFields = "InitContactNo")]
         public string ContactNo { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime? DateOfBirth { get; set; }
+
+        [RegularExpression("(^((((0[1-9])|([1-2][0-9])|(3[0-1]))|([1-9]))\x2F(((0[1-9])|(1[0-2]))|([1-9]))\x2F(([0-9]{2})|(((19)|([2]([0]{1})))([0-9]{2}))))$)", ErrorMessage = ("Date Is Not Correct Format"))]
+        public string SDateOfBirth { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime? JoiningDate { get; set; }
+
+        [RegularExpression("(^((((0[1-9])|([1-2][0-9])|(3[0-1]))|([1-9]))\x2F(((0[1-9])|(1[0-2]))|([1-9]))\x2F(([0-9]{2})|(((19)|([2]([0]{1})))([0-9]{2}))))$)", ErrorMessage = ("Date Is Not Correct Format"))]
+        public string SJoiningDate { get; set; }
+
         [RegularExpression(@"^((\d{10})|(\d{17}))$", ErrorMessage = "NID No Is Not Valid, Required '10 Or 17' Digit.")]
         [Remote("IsNIDExist", "Home", ErrorMessage = "NID No Already Exist.", AdditionalFields = "InitNidNo")]
         public string NIDNo { get; set; }
@@ -55,7 +69,7 @@ namespace PrantiksmeApp.Models.ViewModels
         [ForeignKey("AppUser")]
         public long AppUserId { get; set; }
 
-        [Required(ErrorMessage = "Gender Id Is Required.")]
+        [Required(ErrorMessage = "Gender Is Required.")]
         public int GenderId { get; set; }
 
         [Required(ErrorMessage = "Code Is Required.")]

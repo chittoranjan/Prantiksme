@@ -144,6 +144,10 @@
     <Compile Include="Migrations\201905050544558_SeedData_For_Role.Designer.cs">
       <DependentUpon>201905050544558_SeedData_For_Role.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905091547109_CustomerAndEmployeeModelUpdated.cs" />
+    <Compile Include="Migrations\201905091547109_CustomerAndEmployeeModelUpdated.Designer.cs">
+      <DependentUpon>201905091547109_CustomerAndEmployeeModelUpdated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\ApplicationUtility.cs" />
@@ -180,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905050544558_SeedData_For_Role.resx">
       <DependentUpon>201905050544558_SeedData_For_Role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905091547109_CustomerAndEmployeeModelUpdated.resx">
+      <DependentUpon>201905091547109_CustomerAndEmployeeModelUpdated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
