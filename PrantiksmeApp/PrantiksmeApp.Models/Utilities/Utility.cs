@@ -16,7 +16,7 @@ using System.Web.Configuration;
 using System.Web.Hosting;
 using System.Xml.Serialization;
 
-namespace PrantiksmeApp.Models.Utilitys
+namespace PrantiksmeApp.Models.Utilities
 {
     public static class Utility
     {

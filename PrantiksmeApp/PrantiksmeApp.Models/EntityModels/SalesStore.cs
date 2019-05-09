@@ -33,6 +33,7 @@ namespace PrantiksmeApp.Models.EntityModels
         public long CreatedBy { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public long? ModifiedBy { get; set; }
+
         public bool IsDeleted { get; set; }
         public bool Delete()
         {
