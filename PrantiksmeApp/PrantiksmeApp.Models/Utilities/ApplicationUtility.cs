@@ -42,6 +42,13 @@ namespace PrantiksmeApp.Models.Utilities
             return createList;
         }
 
+        public IEnumerable<SelectListItem> GetAppUserTypeSelectListItems()
+        {
+            var dataList = _db.AppUserTypes.ToList();
+            var createList = GetDefaultSelectListItem();
+            createList.AddRange(dataList.Select(item => new SelectListItem() { Value = item.Id.ToString(), Text = item.Name }));
+            return createList;
+        }
         public IEnumerable<SelectListItem> GetProductCategorySelectListItems()
         {
             var dataList = _db.ProductCategories.ToList();

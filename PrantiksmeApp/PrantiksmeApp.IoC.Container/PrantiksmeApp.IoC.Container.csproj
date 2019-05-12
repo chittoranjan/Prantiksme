@@ -120,10 +120,6 @@
       <Project>{cd57458a-8463-4f0a-9b80-413c0b538d69}</Project>
       <Name>PrantiksmeApp.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PrantiksmeApp\PrantiksmeApp.csproj">
-      <Project>{43ebaef9-538f-49fe-91e3-5f5fa3e09bec}</Project>
-      <Name>PrantiksmeApp</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

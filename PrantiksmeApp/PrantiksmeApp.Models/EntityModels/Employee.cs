@@ -56,6 +56,8 @@ namespace PrantiksmeApp.Models.EntityModels
         [Required(ErrorMessage = "Gender Is Required.")]
         public int GenderId { get; set; }
 
+        public int AppUserTypeId { get; set; }
+
         [Required(ErrorMessage = "Code Is Required.")]
         public string UniversalCode { get; set; }
 
@@ -76,5 +78,6 @@ namespace PrantiksmeApp.Models.EntityModels
         public virtual ApplicationUser AppUser { get; set; }
         public virtual SalesStore SalesStore { get; set; }
         public virtual Gender Gender { get; set; }
+        public virtual AppUserType AppUserType { get; set; }
     }
 }

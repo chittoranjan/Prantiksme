@@ -60,6 +60,10 @@
       <Project>{9C941B35-DB59-497F-96D7-E0AE2D9260D6}</Project>
       <Name>PrantiksmeApp.Repository.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PrantiksmeApp.Repository\PrantiksmeApp.Repository.csproj">
+      <Project>{cd57458a-8463-4f0a-9b80-413c0b538d69}</Project>
+      <Name>PrantiksmeApp.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -359,6 +359,18 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PrantiksmeApp.BLL.Contracts\PrantiksmeApp.BLL.Contracts.csproj">
+      <Project>{8fab594d-bde1-40c6-b741-0dbe7302542b}</Project>
+      <Name>PrantiksmeApp.BLL.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrantiksmeApp.BLL\PrantiksmeApp.BLL.csproj">
+      <Project>{3c983ea1-46fd-4fc0-a631-0edbf79a40db}</Project>
+      <Name>PrantiksmeApp.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrantiksmeApp.IoC.Container\PrantiksmeApp.IoC.Container.csproj">
+      <Project>{ef0790b5-53ae-4a38-9a5d-bda35d5b709c}</Project>
+      <Name>PrantiksmeApp.IoC.Container</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PrantiksmeApp.Models\PrantiksmeApp.Models.csproj">
       <Project>{E2B7791B-5A65-4E5B-A928-A2E360EDC16C}</Project>
       <Name>PrantiksmeApp.Models</Name>
