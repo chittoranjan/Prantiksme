@@ -9,7 +9,7 @@ namespace PrantiksmeApp.BLL.Base
 {
     public abstract class Manager<T>: IDisposable,IManager<T> where T:class,IDeletable
     {
-        protected  IRepository<T> _repository;
+        private  IRepository<T> _repository;
 
         protected Manager(IRepository<T> repository)
         {

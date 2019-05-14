@@ -15,7 +15,7 @@ namespace PrantiksmeApp.BLL
     public class AppUserTypeManager:Manager<AppUserType>,IAppUserTypeManager
     {
         protected IAppUserTypeRepository _repository;
-        protected AppUserTypeManager(IAppUserTypeRepository repository) : base(repository)
+        public AppUserTypeManager(IAppUserTypeRepository repository) : base(repository)
         {
             this._repository = repository;
         }

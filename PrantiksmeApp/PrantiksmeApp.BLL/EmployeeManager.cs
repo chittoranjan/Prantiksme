@@ -13,7 +13,7 @@ namespace PrantiksmeApp.BLL
 {
     public class EmployeeManager:Manager<Employee>,IEmployeeManager
     {
-        private IEmployeeRepository _repository;
+        private readonly IEmployeeRepository _repository;
         public EmployeeManager(IEmployeeRepository repository) : base(repository)
         {
             this._repository = repository;

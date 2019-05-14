@@ -1,0 +1,66 @@
+﻿@model PrantiksmeApp.Models.EntityModels.Gender
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="post postdiv">
+        <header class="headerdiv">
+            <div class="title titlediv">
+                <h2><span><a><i class="glyphicon glyphicon-hand-right"></i></a>&nbsp;</span><a href="#">Gender Create </a></h2>
+
+            </div>
+            <div class="meta metadiv">
+                <div class="row metarow">
+                    <a href="#" title="User" data-toggle=""><i class="fa fa-user"></i></a>
+                    <a href="#" title="Search" data-toggle=""><i class="fa fa-search"></i></a>
+                    <a href="#" title="Setting" data-toggle=""><i class="fa fa-gear"></i></a>
+                    <a href="#divCollapse" title="Collapse" data-toggle="collapse"><i class="fa fa-angle-double-down"></i></a>
+                </div>
+            </div>
+        </header>
+
+        <div id="divCollapse" class="collapse in text-justify maindiv ">
+            <div class="form-horizontal">
+        
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsDeleted, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.IsDeleted)
+                            @Html.ValidationMessageFor(model => model.IsDeleted, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                        @Html.ActionLink("Back to List", "Index",null,new{@class="btn btn-info"})
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+}
+
+
+
+@section Scripts {
+    
+}

@@ -18,7 +18,7 @@ namespace PrantiksmeApp.Models.EntityModels
         public bool IsDeleted { get; set; }
         public bool Delete()
         {
-            return IsDeleted=false;
+            return IsDeleted=true;
         }
     }
 }

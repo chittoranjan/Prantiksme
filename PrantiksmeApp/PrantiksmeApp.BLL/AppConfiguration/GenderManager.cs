@@ -14,8 +14,9 @@ namespace PrantiksmeApp.BLL
 {
     public class GenderManager:Manager<Gender>,IGenderManager
     {
-        protected IGenderRepository _repository;
-        protected GenderManager(IGenderRepository repository) : base(repository)
+        protected readonly IGenderRepository _repository;
+
+        public GenderManager(IGenderRepository repository) : base(repository)
         {
             this._repository = repository;
         }

@@ -14,7 +14,7 @@ namespace PrantiksmeApp.BLL
     
     public class SalesStoreManager:Manager<SalesStore>,ISalesStoreManager
     {
-        private ISalesStoreRepository _repository;
+        private readonly ISalesStoreRepository _repository;
         public SalesStoreManager(ISalesStoreRepository repository) : base(repository)
         {
             this._repository = repository;
