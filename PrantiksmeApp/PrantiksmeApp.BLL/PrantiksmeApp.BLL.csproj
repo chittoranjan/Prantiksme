@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfiguration\AppUserTypeManager.cs" />
+    <Compile Include="AppConfiguration\GenderManager.cs" />
     <Compile Include="Base\Manager.cs" />
     <Compile Include="CustomerManager.cs" />
     <Compile Include="EmployeeManager.cs" />

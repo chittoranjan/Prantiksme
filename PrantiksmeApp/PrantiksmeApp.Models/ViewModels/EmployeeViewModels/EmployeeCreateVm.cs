@@ -13,7 +13,7 @@ using PrantiksmeApp.Models.IdentityModels;
 
 namespace PrantiksmeApp.Models.ViewModels
 {
-    public class EmployeeCreateVm:IAuditable,IModel,IAutoCode,IDeletable
+    public class EmployeeCreateVm:IAuditable,IAutoCode,IDeletable
     {
         public long Id { get; set; }
 
@@ -84,7 +84,7 @@ namespace PrantiksmeApp.Models.ViewModels
         public bool IsDeleted { get; set; }
         public bool Delete()
         {
-            return IsDeleted = true;
+            return IsDeleted = false;
         }
 
         public string FullName => $"{FirstName} {MiddleName} {LastName}";

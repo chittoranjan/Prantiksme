@@ -182,6 +182,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StoreRegistration\StoreRegistrationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -343,6 +344,11 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Demo.cshtml" />
+    <Content Include="Views\StoreRegistration\Create.cshtml" />
+    <Content Include="Views\StoreRegistration\Delete.cshtml" />
+    <Content Include="Views\StoreRegistration\Details.cshtml" />
+    <Content Include="Views\StoreRegistration\Edit.cshtml" />
+    <Content Include="Views\StoreRegistration\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

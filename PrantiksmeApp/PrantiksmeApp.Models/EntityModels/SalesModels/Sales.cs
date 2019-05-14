@@ -5,7 +5,7 @@ using PrantiksmeApp.Models.Contracts;
 
 namespace PrantiksmeApp.Models.EntityModels.SalesModels
 {
-    public class Sales:IAuditable,IModel,IAutoCode
+    public class Sales:IAuditable,IAutoCode
     {
         public long Id { get; set; }
         public string Description { get; set; }

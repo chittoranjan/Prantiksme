@@ -9,7 +9,7 @@ using PrantiksmeApp.Models.Contracts;
 
 namespace PrantiksmeApp.Models.ViewModels.SalesStoreViewModels
 {
-    public class SalesStoreCreateVm: IAuditable, IDeletable, IAutoCode, IModel
+    public class SalesStoreCreateVm: IAuditable, IDeletable, IAutoCode
     {
         public long Id { get; set; }
 
@@ -42,7 +42,7 @@ namespace PrantiksmeApp.Models.ViewModels.SalesStoreViewModels
         public bool IsDeleted { get; set; }
         public bool Delete()
         {
-            return IsDeleted = true;
+            return IsDeleted = false;
         }
     }
 }

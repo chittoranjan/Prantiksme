@@ -13,7 +13,7 @@ namespace PrantiksmeApp.BLL
 {
     public class CustomerManager:Manager<Customer>,ICustomerManager
     {
-        protected ICustomerRepository _repository;
+        private ICustomerRepository _repository;
         protected CustomerManager(ICustomerRepository repository) : base(repository)
         {
             this._repository = repository;

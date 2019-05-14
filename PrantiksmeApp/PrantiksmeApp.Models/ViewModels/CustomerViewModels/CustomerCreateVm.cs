@@ -7,7 +7,7 @@ using PrantiksmeApp.Models.EntityModels;
 
 namespace PrantiksmeApp.Models.ViewModels.CustomerViewModels
 {
-    public class CustomerCreateVm:IAuditable,IModel,IAutoCode,IDeletable
+    public class CustomerCreateVm:IAuditable,IAutoCode,IDeletable
     {
         public long Id { get; set; }
 
@@ -36,7 +36,7 @@ namespace PrantiksmeApp.Models.ViewModels.CustomerViewModels
         public bool IsDeleted { get; set; }
         public bool Delete()
         {
-            return IsDeleted = true;
+            return IsDeleted = false;
         }
 
         public virtual SalesStore SalesStore { get; set; }

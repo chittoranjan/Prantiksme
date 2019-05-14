@@ -9,7 +9,7 @@ using PrantiksmeApp.Models.EntityModels.ProductModels;
 
 namespace PrantiksmeApp.Models.EntityModels.SalesModels
 {
-    public class SalesSummary:IAuditable,IModel,IAutoCode
+    public class SalesSummary:IAuditable,IAutoCode
     {
         public long Id { get; set; }
         public long ProductCategoryId { get; set; }

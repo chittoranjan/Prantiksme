@@ -7,7 +7,7 @@ using PrantiksmeApp.Models.Contracts;
 
 namespace PrantiksmeApp.Models.EntityModels.ProductModels
 {
-    public class ProductSubCategory:IAuditable,IAutoCode,IModel,IDeletable
+    public class ProductSubCategory:IAuditable,IAutoCode,IDeletable
     {
         public long Id { get; set; }
 

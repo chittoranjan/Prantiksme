@@ -6,7 +6,7 @@ using PrantiksmeApp.Models.Contracts;
 
 namespace PrantiksmeApp.Models.EntityModels.ProductModels
 {
-    public class ProductItem:IAuditable,IModel,IAutoCode,IDeletable
+    public class ProductItem:IAuditable,IAutoCode,IDeletable
     {
         public long Id { get; set; }
 

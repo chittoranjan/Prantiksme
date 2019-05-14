@@ -15,7 +15,7 @@ using PrantiksmeApp.Models.IdentityModels;
 
 namespace PrantiksmeApp.Models.ViewModels.StoreRegistrationViewModels
 {
-    public class StoreRegistrationCreateVm : IModel, IAutoCode, IAuditable
+    public class StoreRegistrationCreateVm :IAutoCode, IAuditable
     {
 
         //Proprietor Section
@@ -132,7 +132,7 @@ namespace PrantiksmeApp.Models.ViewModels.StoreRegistrationViewModels
         {
             var model = new RegisterViewModel
             {
-                UserName = UserName,
+               
                 Password = Password,
                 ConfirmPassword = ConfirmPassword,
                 Email = Email,

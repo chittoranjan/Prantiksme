@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PrantiksmeApp.Models.Contracts;
 
 namespace PrantiksmeApp.Models.EntityModels
 {
-    public class AppUserType
+    public class AppUserType : IDeletable
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool IsDeleted { get; set; }
+        public bool Delete()
+        {
+            return IsDeleted=false;
+        }
     }
 }

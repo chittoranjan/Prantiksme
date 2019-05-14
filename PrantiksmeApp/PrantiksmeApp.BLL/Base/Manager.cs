@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using PrantiksmeApp.BLL.Contracts.Base;
 using PrantiksmeApp.Models.Contracts;
 using PrantiksmeApp.Repository.Contracts.Base;
 
 namespace PrantiksmeApp.BLL.Base
 {
-    public abstract class Manager<T>:IManager<T> where T:class,IModel
+    public abstract class Manager<T>: IDisposable,IManager<T> where T:class,IDeletable
     {
-        protected IRepository<T> _repository;
+        protected  IRepository<T> _repository;
 
         protected Manager(IRepository<T> repository)
         {
@@ -28,10 +29,10 @@ namespace PrantiksmeApp.BLL.Base
 
         public virtual bool Remove(IDeletable entity)
         {
-            bool isDeleteable = entity is IDeletable;
-            if (!isDeleteable)
+            bool isDeletable = entity is IDeletable;
+            if (!isDeletable)
             {
-                throw new Exception("This Item is not Deleteable!");
+                throw new Exception("This Item is not Deletable!");
             }
             return _repository.Remove((IDeletable)entity);
         }
@@ -41,15 +42,24 @@ namespace PrantiksmeApp.BLL.Base
            return _repository.Remove(entities);
         }
 
+        public ICollection<T> GetAll()
+        {
+            return _repository.GetAll();
+        }
+        public virtual ICollection<T> GetAll(bool withDeleted = false)
+        {
+            return _repository.GetAll(withDeleted);
+        }
+        public ICollection<T> Get(Expression<Func<T, bool>> query)
+        {
+            return _repository.Get(query);
+        }
+
         public virtual T GetById(long id)
         {
             return _repository.GetById(id);
         }
-
-        public virtual ICollection<T> GetAll(bool withDeleted=false)
-        {
-            return _repository.GetAll(withDeleted);
-        }
+        
 
         public void Dispose()
         {

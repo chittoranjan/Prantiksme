@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfiguration\AppUserTypeRepository.cs" />
+    <Compile Include="AppConfiguration\GenderRepository.cs" />
     <Compile Include="Base\Repository.cs" />
     <Compile Include="CustomerRepository.cs" />
     <Compile Include="EmployeeRepository.cs" />

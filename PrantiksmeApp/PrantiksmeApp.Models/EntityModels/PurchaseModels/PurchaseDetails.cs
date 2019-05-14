@@ -7,7 +7,7 @@ using PrantiksmeApp.Models.EntityModels.ProductModels;
 
 namespace PrantiksmeApp.Models.EntityModels.PurchaseModels
 {
-    public class PurchaseDetails:IAuditable,IModel,IAutoCode
+    public class PurchaseDetails:IAuditable,IAutoCode
     {
         public long Id { get; set; }
         public long PurchaseId { get; set; }

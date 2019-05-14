@@ -8,27 +8,27 @@ using PrantiksmeApp.Repository.Contracts.Base;
 
 namespace PrantiksmeApp.Repository.Base
 {
-    public abstract class Repository<T>:IRepository<T>  where T :class,IModel
+    public abstract class Repository<T> : IDisposable, IRepository<T> where T : class, IDeletable
     {
-        protected DbContext db;
+        protected DbContext Db;
 
         protected Repository(DbContext db)
         {
-            this.db = db;
+            this.Db = db;
         }
-       
+
 
         public virtual bool Add(T entity)
         {
-            db.Set<T>().Add(entity);
-            return db.SaveChanges() > 0;
+            Db.Set<T>().Add(entity);
+            return Db.SaveChanges() > 0;
         }
 
         public virtual bool Update(T entity)
         {
-            db.Set<T>().Attach(entity);
-            db.Entry(entity).State = EntityState.Modified;
-            return db.SaveChanges() > 0;
+            Db.Set<T>().Attach(entity);
+            Db.Entry(entity).State = EntityState.Modified;
+            return Db.SaveChanges() > 0;
         }
 
         public virtual bool Remove(IDeletable entity)
@@ -53,45 +53,46 @@ namespace PrantiksmeApp.Repository.Base
 
         }
 
+        public ICollection<T> GetAll()
+        {
+            return Db.Set<T>().ToList();
+        }
+
         public virtual ICollection<T> GetAll(bool withDeleted = false)
         {
-            //Expression<Func<IDeletable, bool>> query = c => true;
-            //bool isDeletableObj = typeof(IDeletable).IsAssignableFrom(typeof(T));
-            //if (isDeletableObj)
-            //{
-            //    query = c => c.IsDeleted == false || c.IsDeleted == withDeleted;
 
-            //}
-            return db.Set<T>().ToList();
+            return Db.Set<T>().Where(c => c.IsDeleted == false || c.IsDeleted == withDeleted).ToList();
         }
 
         public virtual ICollection<T> Get(Expression<Func<T, bool>> query)
         {
-            return db.Set<T>().Where(query).ToList();
+            return Db.Set<T>().Where(query).ToList();
         }
-      
+
 
         public virtual T GetById(long id)
         {
-            return db.Set<T>().Find(id);
+            return Db.Set<T>().Find(id);
         }
 
 
         public virtual void Dispose()
         {
-            db?.Dispose();
+            Db?.Dispose();
         }
     }
 
 
-    public abstract class DeleteableRepository<T> : Repository<T> where T : class, IDeletable,IModel
-    {
-        protected DeleteableRepository(DbContext db) : base(db)
-        {
-        }
-        public override ICollection<T> GetAll(bool withDeleted = false)
-        {
-            return db.Set<T>().Where(c => c.IsDeleted == false || c.IsDeleted == withDeleted).ToList();
-        }
-    }
+    //DeletableRepository
+
+    //public abstract class DeletableRepository<T> : Repository<T> where T : class, IDeletable,IModel
+    //{
+    //    protected DeletableRepository(DbContext db) : base(db)
+    //    {
+    //    }
+    //    public override ICollection<T> GetAll(bool withDeleted = false)
+    //    {
+    //        return Db.Set<T>().Where(c => c.IsDeleted == false || c.IsDeleted == withDeleted).ToList();
+    //    }
+    //}
 }

@@ -6,7 +6,7 @@ using PrantiksmeApp.Models.Contracts;
 
 namespace PrantiksmeApp.Models.EntityModels.PurchaseModels
 {
-    public class Purchase:IAutoCode,IAuditable,IModel
+    public class Purchase:IAutoCode,IAuditable
     {
         public long Id { get; set; }
         public string Description { get; set; }
