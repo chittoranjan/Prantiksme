@@ -56,7 +56,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.UniversalCode, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.UniversalCode, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.UniversalCode, new { htmlAttributes = new { @class = "form-control",@readonly="readonly"}})
                                 @Html.ValidationMessageFor(model => model.UniversalCode, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.SDateOfBirth, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.SDateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.SDateOfBirth, new { htmlAttributes = new { @class = "form-control birthDatePicker " } })
                                 @Html.ValidationMessageFor(model => model.SDateOfBirth, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            @Html.LabelFor(model => model.AppUserType, htmlAttributes: new { @class = "control-label col-md-4" })
+                            @Html.LabelFor(model => model.AppUserTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
                                 @Html.DropDownListFor(model => model.AppUserTypeId, Model.AppUserTypeLookUp, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.AppUserTypeId, "", new { @class = "text-danger" })
@@ -160,5 +160,4 @@
 
 
 @section Scripts {
-
 }

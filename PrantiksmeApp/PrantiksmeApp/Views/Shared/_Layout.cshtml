@@ -9,6 +9,8 @@
     <link rel="icon" type="image/ico" href="~/images/favicon.ico" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-toggle.min.css" rel="stylesheet" />
 
     <!--Layout style start-->
@@ -42,12 +44,12 @@
             <nav class="main">
                 <ul>
                     @*@if (Request.IsAuthenticated)
-                    {
-                        <li class="menu">
-                            <span style="color: darkgreen; text-transform: uppercase; font-weight: bold; font-size: 7pt;"> @User.Identity.GetUserName() </span>
-                        </li>
+                        {
+                            <li class="menu">
+                                <span style="color: darkgreen; text-transform: uppercase; font-weight: bold; font-size: 7pt;"> @User.Identity.GetUserName() </span>
+                            </li>
 
-                    }*@
+                        }*@
 
                     <li class="search">
                         <a class="fa-search" href="#search">Search</a>
@@ -112,7 +114,7 @@
         </section>
 
         <!-- Main -->
-        <div id="main" >
+        <div id="main">
             <div class="post" style="min-height: 100vh;">
                 @RenderBody()
             </div>
@@ -137,11 +139,14 @@
     <!-- Scripts -->
 
 
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    @*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="~/Scripts/bootstrap2-toggle.min.js"></script>
+    
 
     <!--Layout script start-->
     @*<script src="~/assets/js/jquery.min.js"></script>*@
@@ -152,6 +157,7 @@
     <!--Layout script end-->
 
     @Scripts.Render("~/project/js")
+
     @RenderSection("scripts", required: false)
 
 </body>

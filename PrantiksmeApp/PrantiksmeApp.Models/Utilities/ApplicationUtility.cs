@@ -192,8 +192,8 @@ namespace PrantiksmeApp.Models.Utilities
         {
             PrantiksmeDbContext db = new PrantiksmeDbContext();
             string codeSl = "";
-            //var countId = db.Users.Count();
-            var countId = 999;
+            var countId = db.Users.Count();
+           
             countId++;
             if (countId <= 9)
             {
@@ -211,7 +211,7 @@ namespace PrantiksmeApp.Models.Utilities
                 string slNo = Convert.ToString("0" + countId);
                 codeSl = slNo;
             }
-            else
+            if(countId>999)
             {
                 string slNo = Convert.ToString(countId);
                 codeSl = slNo;
@@ -233,17 +233,17 @@ namespace PrantiksmeApp.Models.Utilities
                 string slNo = Convert.ToString("000" + countId);
                 codeSl = slNo;
             }
-            if (countId <= 99)
+            if (countId > 9 && countId <= 99)
             {
                 string slNo = Convert.ToString("00" + countId);
                 codeSl = slNo;
             }
-            if (countId <= 999)
+            if (countId > 99 && countId <= 999)
             {
                 string slNo = Convert.ToString("0" + countId);
                 codeSl = slNo;
             }
-            else
+            if (countId > 999)
             {
                 string slNo = Convert.ToString(countId);
                 codeSl = slNo;
