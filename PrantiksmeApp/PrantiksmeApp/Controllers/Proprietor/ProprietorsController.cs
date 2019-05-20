@@ -6,138 +6,153 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 using PrantiksmeApp.BLL.Contracts;
 using PrantiksmeApp.Models.Context;
 using PrantiksmeApp.Models.EntityModels;
-using PrantiksmeApp.Models.IdentityModels;
 using PrantiksmeApp.Models.Utilities;
-using PrantiksmeApp.Models.ViewModels.StoreRegistrationViewModels;
+using PrantiksmeApp.Models.ViewModels.ProprietorViewModels;
 
-namespace PrantiksmeApp.Controllers.StoreRegistration
+namespace PrantiksmeApp.Controllers.Proprietor
 {
-    public class StoreRegistrationController : Controller
+    public class ProprietorsController : Controller
     {
-        private ISalesStoreManager _salesStoreManager;
-        private IEmployeeManager _employeeManager;
-        //private ApplicationUserManager _applicationUserManager;
-        private IGenderManager _genderManager;
-        private IAppUserTypeManager _appUserTypeManager;
-        private ApplicationUtility _applicationUtility;
 
- 
-        public StoreRegistrationController(ISalesStoreManager salesStoreManager,IEmployeeManager employeeManager,ApplicationUserManager applicationUserManager,
-            IGenderManager genderManager,IAppUserTypeManager appUserTypeManager,ApplicationUtility applicationUtility)
+        private readonly IEmployeeManager _employeeManager;
+        private IGenderManager _genderManager;
+        private readonly IAppUserTypeManager _appUserTypeManager;
+        private readonly ApplicationUtility _applicationUtility;
+
+        public ProprietorsController(IEmployeeManager employeeManager, IGenderManager genderManager, IAppUserTypeManager appUserTypeManager, ApplicationUtility applicationUtility)
         {
-           // this._applicationUserManager = applicationUserManager;
-            this._salesStoreManager = salesStoreManager;
+
             this._employeeManager = employeeManager;
             this._genderManager = genderManager;
             this._appUserTypeManager = appUserTypeManager;
             this._applicationUtility = applicationUtility;
         }
-        // GET: StoreRegistration
+
+        // GET: AppUserTypes
         public ActionResult Index()
         {
+            try
+            {
+                return View();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
             
-            return View();
         }
 
-        // GET: StoreRegistration/Details/5
-        public ActionResult Details(long id)
+        // GET: AppUserTypes/Details/5
+        public ActionResult Details(int id)
         {
-            if (id == null)
+            if (id <= 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SalesStore salesStore = _salesStoreManager.GetById(id);
-            if (salesStore == null)
+            AppUserType appUserType = _appUserTypeManager.GetById(id);
+            if (appUserType == null)
             {
                 return HttpNotFound();
             }
-            return View();
+            return View(appUserType);
         }
 
-        // GET: StoreRegistration/Create
+        // GET: AppUserTypes/Create
         public ActionResult Create()
         {
-            var model = new StoreRegistrationCreateVm()
+            var model = new ProprietorCreateVm()
             {
                 GenderLookUp = _applicationUtility.GetGenderSelectListItems(),
                 AppUserTypeLookUp = _applicationUtility.GetAppUserTypeSelectListItems(),
+
             };
+            return View(model);
+        }
+
+        // POST: AppUserTypes/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ProprietorCreateVm model)
+        {
+            model.GenderLookUp = _applicationUtility.GetGenderSelectListItems();
+            model.AppUserTypeLookUp = _applicationUtility.GetAppUserTypeSelectListItems();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    return RedirectToAction("Index");
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
 
             return View(model);
         }
 
-        // POST: StoreRegistration/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create( StoreRegistrationCreateVm storeRegistrationCreateVm)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(storeRegistrationCreateVm);
-            }
-
-            return View(storeRegistrationCreateVm);
-        }
-
-        // GET: StoreRegistration/Edit/5
-        public ActionResult Edit(long id)
+        // GET: AppUserTypes/Edit/5
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SalesStore salesStore = _salesStoreManager.GetById(id);
-            if (salesStore == null)
+            AppUserType appUserType = _appUserTypeManager.GetById(id);
+            if (appUserType == null)
             {
                 return HttpNotFound();
             }
-            return View(salesStore);
+            return View(appUserType);
         }
 
-        // POST: StoreRegistration/Edit/5
+        // POST: AppUserTypes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( SalesStore salesStore)
+        public ActionResult Edit( AppUserType appUserType)
         {
             if (ModelState.IsValid)
             {
-                var result = _salesStoreManager.Update(salesStore);
+                
                 return RedirectToAction("Index");
             }
-            return View(salesStore);
+            return View(appUserType);
         }
 
-        // GET: StoreRegistration/Delete/5
-        public ActionResult Delete(long id)
+        // GET: AppUserTypes/Delete/5
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            SalesStore salesStore = _salesStoreManager.GetById(id);
-            if (salesStore == null)
+            AppUserType appUserType = _appUserTypeManager.GetById(id);
+            if (appUserType == null)
             {
                 return HttpNotFound();
             }
-            return View(salesStore);
+            return View(appUserType);
         }
 
-        // POST: StoreRegistration/Delete/5
+        // POST: AppUserTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(long id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            SalesStore salesStore = _salesStoreManager.GetById(id);
-            var result = _salesStoreManager.Remove(salesStore);
+            AppUserType appUserType = _appUserTypeManager.GetById(id);
+            
             return RedirectToAction("Index");
         }
 
@@ -155,7 +170,7 @@ namespace PrantiksmeApp.Controllers.StoreRegistration
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
 
-            
+
             var result = _employeeManager.Get(c => c.NIDNo.Equals(nidNo)).FirstOrDefault();
             return Json(result == null, JsonRequestBehavior.AllowGet);
         }
@@ -170,7 +185,7 @@ namespace PrantiksmeApp.Controllers.StoreRegistration
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
-           
+
             var result = _employeeManager.Get(c => c.ContactNo.Equals(contactNo)).FirstOrDefault();
             return Json(result == null, JsonRequestBehavior.AllowGet);
         }

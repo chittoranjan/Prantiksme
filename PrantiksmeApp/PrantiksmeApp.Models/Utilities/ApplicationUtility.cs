@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -25,6 +26,8 @@ namespace PrantiksmeApp.Models.Utilities
 
         #endregion
 
+        #region Application Startup Method
+
         public List<SelectListItem> GetDefaultSelectListItem()
         {
             var items = new List<SelectListItem>
@@ -33,6 +36,10 @@ namespace PrantiksmeApp.Models.Utilities
             };
             return items;
         }
+
+        #endregion
+
+        #region Application Method
 
         public IEnumerable<SelectListItem> GetGenderSelectListItems()
         {
@@ -106,6 +113,149 @@ namespace PrantiksmeApp.Models.Utilities
         //    return createList;
         //}
 
+        //public List<SelectListItem> GetBloodGroupSelectListItem()
+        //{
+        //    var dataList = _db.BloodGroups.ToList();
+        //    var items = GetDefaultSelectListItem();
+        //    items.AddRange(dataList.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }));
+        //    return items;
+        //}
+
+        //public List<SelectListItem> GetMaritalStatusSelectListItem()
+        //{
+        //    var dataList = "";//_db.MaritalStatuses.ToList();
+        //    var items = GetDefaultSelectListItem();
+        //    items.AddRange(dataList.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }));
+        //    return items;
+        //}
+
+        //public List<SelectListItem> GetEduGradeSelectListItem()
+        //{
+        //    var dataList = _db.EduGrades.ToList();
+        //    var items = GetDefaultSelectListItem();
+        //    items.AddRange(dataList.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }));
+        //    return items;
+        //}
+
+        //public IEnumerable<SelectListItem> GetEduLevelSelectListItems()
+        //{
+        //    var dataList = _db.EducationLevels.ToList();
+        //    var items = GetDefaultSelectListItem();
+        //    items.AddRange(dataList.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }));
+        //    return items;
+        //}
+
+        //public IEnumerable<SelectListItem> GetEduGradePointTypeLookUp()
+        //{
+        //    var dataList = _db.EduGradePointTypes.ToList();
+        //    var items = GetDefaultSelectListItem();
+        //    items.AddRange(dataList.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }));
+        //    return items;
+        //}
+
+        //public List<SelectListItem> GetEduGradePointTypeSelectListItem()
+        //{
+        //    var dataList = _db.EduGradePointTypes.ToList();
+        //    var items = GetDefaultSelectListItem();
+        //    items.AddRange(dataList.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }));
+        //    return items;
+        //}
+
+        //public List<SelectListItem> GetReligionSelectListItem()
+        //{
+        //    var dataList = _db.Religions.ToList();
+        //    var items = GetDefaultSelectListItem();
+        //    items.AddRange(dataList.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }));
+        //    return items;
+        //}
+
+        //public List<SelectListItem> GetEmploymentTypeSelectListItem()
+        //{
+        //    var dataList = _db.EmploymentTypes.ToList();
+        //    var items = GetDefaultSelectListItem();
+        //    items.AddRange(dataList.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }));
+        //    return items;
+        //}
+
+        //public IEnumerable<SelectListItem> GetAddressTypeLookUp()
+        //{
+        //    var dataList = _db.AddressTypes.ToList();
+        //    var items = GetDefaultSelectListItem();
+        //    items.AddRange(dataList.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }));
+        //    return items;
+        //}
+
+        #endregion
+            
+        #region Universal Code 
+        public static string GetEmployeeUniversalCode()
+        {
+            PrantiksmeDbContext db = new PrantiksmeDbContext();
+            string codeSl = "";
+            //var countId = db.Users.Count();
+            var countId = 999;
+            countId++;
+            if (countId <= 9)
+            {
+
+                string slNo = Convert.ToString("000" + countId);
+                codeSl = slNo;
+            }
+            if (countId >9 && countId<= 99)
+            {
+                string slNo = Convert.ToString("00" + countId);
+                codeSl = slNo;
+            }
+            if (countId >99 && countId<= 999)
+            {
+                string slNo = Convert.ToString("0" + countId);
+                codeSl = slNo;
+            }
+            else
+            {
+                string slNo = Convert.ToString(countId);
+                codeSl = slNo;
+            }
+            
+            var code = codeSl + " " + DateTime.Today.ToString("ddMMyy");
+            return code;
+        }
+
+        private string GetSalesStoreUniversalCode()
+        {
+            PrantiksmeDbContext db = new PrantiksmeDbContext();
+            string codeSl = "";
+            var countId = db.SalesStores.Count();
+            countId++;
+            if (countId <= 9)
+            {
+
+                string slNo = Convert.ToString("000" + countId);
+                codeSl = slNo;
+            }
+            if (countId <= 99)
+            {
+                string slNo = Convert.ToString("00" + countId);
+                codeSl = slNo;
+            }
+            if (countId <= 999)
+            {
+                string slNo = Convert.ToString("0" + countId);
+                codeSl = slNo;
+            }
+            else
+            {
+                string slNo = Convert.ToString(countId);
+                codeSl = slNo;
+            }
+            
+            var code = codeSl + " " + DateTime.Today.ToString("ddMMyy");
+
+            return code;
+        }
+
+
+        #endregion
 
     }
 

@@ -182,6 +182,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Proprietor\ProprietorsController.cs" />
     <Compile Include="Controllers\StoreRegistration\StoreRegistrationController.cs" />
     <Compile Include="Controllers\TestController\GendersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -355,6 +356,11 @@
     <Content Include="Views\Genders\Details.cshtml" />
     <Content Include="Views\Genders\Edit.cshtml" />
     <Content Include="Views\Genders\Index.cshtml" />
+    <Content Include="Views\Proprietors\Create.cshtml" />
+    <Content Include="Views\Proprietors\Delete.cshtml" />
+    <Content Include="Views\Proprietors\Details.cshtml" />
+    <Content Include="Views\Proprietors\Edit.cshtml" />
+    <Content Include="Views\Proprietors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

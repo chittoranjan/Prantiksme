@@ -51,6 +51,7 @@ namespace PrantiksmeApp.IoC.Container
 
             container.RegisterType<DbContext, PrantiksmeDbContext>();
 
+
             container.RegisterType<IGenderManager, GenderManager>();
             container.RegisterType<IGenderRepository, GenderRepository>();
 
