@@ -33,14 +33,14 @@
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
                             @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
+                            <div class="col-md-6">
                                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
+                            <div class="col-md-6">
                                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                             </div>
@@ -48,7 +48,7 @@
 
                         <div class="form-group">
                             @Html.LabelFor(m => m.RememberMe, "Remember?", new { @class = "col-md-2 control-label" })
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <!-- For Togle Switch: Need Install "Bootstrap-Toggle-Master" Package-->
                                 @Html.CheckBoxFor(m => m.RememberMe, new { @id = "rememberMeCheckBox", @data_toggle = "toggle", @data_on = "Yes", @data_off = "No" })
                                 @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })

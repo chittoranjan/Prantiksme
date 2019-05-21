@@ -1,5 +1,5 @@
 ﻿
-
+/*Layout custom CSS start*/
 .btn-size {
     width: 75px;
 }
@@ -44,3 +44,24 @@
     .metarow a {
         border: none !important;
     }
+
+input, select, textarea {
+    max-width: 100% !important;
+}
+
+    input[type="text"], input[type="password"], input[type="email"], input[type="tel"], select, textarea {
+        border-radius: 5px;
+    }
+/*Layout custom CSS end*/
+
+
+/*Jquery date picker custom CSS start*/
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+    width: 100% !important;
+}
+
+.ui-datepicker {
+    width: auto;
+}
+
+/*Jquery date picker custom CSS end*/
