@@ -4,13 +4,16 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using PrantiksmeApp.BLL.Contracts;
 using PrantiksmeApp.Models.Context;
 using PrantiksmeApp.Models.EntityModels;
+using PrantiksmeApp.Models.IdentityModels;
 using PrantiksmeApp.Models.Utilities;
 using PrantiksmeApp.Models.ViewModels.ProprietorViewModels;
 
@@ -111,7 +114,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ProprietorCreateVm model)
+        public async Task<ActionResult> Create(ProprietorCreateVm model)
         {
             model.GenderLookUp = _applicationUtility.GetGenderSelectListItems();
             model.AppUserTypeLookUp = _applicationUtility.GetAppUserTypeSelectListItems();
@@ -119,6 +122,35 @@ namespace PrantiksmeApp.Controllers.Proprietor
             {
                 if (ModelState.IsValid)
                 {
+                    RegisterViewModel registerViewModel = model.GetUserCreateModel();
+                    Employee employee = Mapper.Map<Employee>(model);
+
+                    var user = new ApplicationUser { UserName = registerViewModel.UserName, Email = registerViewModel.Email };
+                    var result = await UserManager.CreateAsync(user, registerViewModel.Password);
+                    if (result.Succeeded)
+                    {
+                        var userId = user.Id;
+                        employee.AppUserId = userId;
+                        employee.CreatedOn = DateTime.Now;
+                        employee.CreatedBy = userId;
+                        if (!string.IsNullOrEmpty(model.SDateOfBirth))
+                        {
+                            employee.DateOfBirth = Models.Utilities.Utility.GetDate(model.SDateOfBirth);
+                        }
+                        if (!string.IsNullOrEmpty(model.SJoiningDate))
+                        {
+                            employee.DateOfBirth = Models.Utilities.Utility.GetDate(model.SJoiningDate);
+                        }
+
+                        var result1 = _employeeManager.Add(employee);
+                        if (result1)
+                        {
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                            return RedirectToAction("Index", "Home");
+                        }
+
+                    }
 
                     return RedirectToAction("Index");
                 }
@@ -235,7 +267,8 @@ namespace PrantiksmeApp.Controllers.Proprietor
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
             var result = _employeeManager.Get(c => c.Email.Equals(email)).FirstOrDefault();
-            return Json(result == null, JsonRequestBehavior.AllowGet);
+            var result1 = UserManager.FindByEmail(email);
+            return Json(result == null && result1 == null, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult IsUserNameExist(string userName, string initUserName)

@@ -24,7 +24,7 @@ namespace PrantiksmeApp
 
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<Employee, ProprietorCreateVm>();
+                cfg.CreateMap<ProprietorCreateVm, Employee>();
             });
         }
     }

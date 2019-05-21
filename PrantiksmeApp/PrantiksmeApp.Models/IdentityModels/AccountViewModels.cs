@@ -50,7 +50,7 @@ namespace PrantiksmeApp.Models.IdentityModels
     {
         [Required]
         [Display(Name = "Email")]
-        [EmailAddress]
+        //[EmailAddress]
         public string Email { get; set; }
 
         [Required]
