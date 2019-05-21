@@ -117,17 +117,20 @@ namespace PrantiksmeApp.Models.ViewModels.ProprietorViewModels
         public IEnumerable<SelectListItem> AppUserTypeLookUp { get; set; }
 
         //User Create Section
-        [Display(Name = "User Name")]
+        [Required(ErrorMessage = "User Name Is Required.")]
+        [Display(Name = "User Name *")]
         [RegularExpression(@"^\S+$", ErrorMessage = "Space Not Allow In User Name")]
         [Remote("IsUserNameExist", "Proprietors", ErrorMessage = "User Name Already Exist.", AdditionalFields = "InitUserName")]
         public string UserName { get; set; }
 
-        [Display(Name = "Password")]
+        [Required(ErrorMessage = "Password Is Required.")]
+        [Display(Name = "Password *")]
         [StringLength(50, ErrorMessage = "The password must be at least 6 characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "Confirm Password")]
+        [Required(ErrorMessage = "Confirm Password Is Required.")]
+        [Display(Name = "Confirm Password *")]
         [DataType(DataType.Password)]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }

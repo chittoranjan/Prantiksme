@@ -52,6 +52,7 @@ input, select, textarea {
     input[type="text"], input[type="password"], input[type="email"], input[type="tel"], select, textarea {
         border-radius: 5px;
     }
+
 /*Layout custom CSS end*/
 
 
@@ -60,8 +61,8 @@ input, select, textarea {
     width: 100% !important;
 }
 
-.ui-datepicker {
+/*.ui-datepicker {
     width: auto;
-}
+}*/
 
 /*Jquery date picker custom CSS end*/

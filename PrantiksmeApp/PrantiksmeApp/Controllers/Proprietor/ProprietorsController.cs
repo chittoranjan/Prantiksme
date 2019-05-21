@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using PrantiksmeApp.BLL.Contracts;
 using PrantiksmeApp.Models.Context;
 using PrantiksmeApp.Models.EntityModels;
@@ -16,6 +18,8 @@ namespace PrantiksmeApp.Controllers.Proprietor
 {
     public class ProprietorsController : Controller
     {
+        #region Configuration
+
 
         private readonly IEmployeeManager _employeeManager;
         private IGenderManager _genderManager;
@@ -30,7 +34,36 @@ namespace PrantiksmeApp.Controllers.Proprietor
             this._appUserTypeManager = appUserTypeManager;
             this._applicationUtility = applicationUtility;
         }
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
 
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+
+        #endregion
         // GET: AppUserTypes
         public ActionResult Index()
         {
@@ -43,7 +76,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
                 Console.WriteLine(e.Message);
                 throw;
             }
-            
+
         }
 
         // GET: AppUserTypes/Details/5
@@ -120,11 +153,11 @@ namespace PrantiksmeApp.Controllers.Proprietor
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( AppUserType appUserType)
+        public ActionResult Edit(AppUserType appUserType)
         {
             if (ModelState.IsValid)
             {
-                
+
                 return RedirectToAction("Index");
             }
             return View(appUserType);
@@ -152,7 +185,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
         public ActionResult DeleteConfirmed(int id)
         {
             AppUserType appUserType = _appUserTypeManager.GetById(id);
-            
+
             return RedirectToAction("Index");
         }
 
@@ -217,8 +250,8 @@ namespace PrantiksmeApp.Controllers.Proprietor
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
 
-            //var result = _applicationUserManager.FindByName(userName);
-            var result = "";
+            var result = UserManager.FindByName(userName);
+
             return Json(result == null, JsonRequestBehavior.AllowGet);
         }
         #endregion
