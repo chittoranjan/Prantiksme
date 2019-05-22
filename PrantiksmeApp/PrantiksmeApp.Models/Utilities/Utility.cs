@@ -333,6 +333,5 @@ namespace PrantiksmeApp.Models.Utilities
 
         #endregion
 
-
     }
 }

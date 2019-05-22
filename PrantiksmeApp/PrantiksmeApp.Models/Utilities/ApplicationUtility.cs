@@ -2,7 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using Microsoft.VisualBasic.ApplicationServices;
 using PrantiksmeApp.Models.Context;
 using PrantiksmeApp.Models.Enums;
 
@@ -27,7 +30,7 @@ namespace PrantiksmeApp.Models.Utilities
         #endregion
 
         #region Application Startup Method
-
+       
         public List<SelectListItem> GetDefaultSelectListItem()
         {
             var items = new List<SelectListItem>
@@ -35,6 +38,20 @@ namespace PrantiksmeApp.Models.Utilities
                 new SelectListItem {Value = "", Text = "---Select---"},
             };
             return items;
+        }
+
+        public static long GetUserId()
+        {
+            var userId = 0;
+
+            return userId;
+        }
+
+        public static long GetProprietorId()
+        {
+            var proprietorId = 0;
+
+            return proprietorId;
         }
 
         #endregion
@@ -221,7 +238,7 @@ namespace PrantiksmeApp.Models.Utilities
             return code;
         }
 
-        private string GetSalesStoreUniversalCode()
+        public static string GetSalesStoreUniversalCode()
         {
             PrantiksmeDbContext db = new PrantiksmeDbContext();
             string codeSl = "";
@@ -253,7 +270,7 @@ namespace PrantiksmeApp.Models.Utilities
 
             return code;
         }
-
+        
 
         #endregion
 

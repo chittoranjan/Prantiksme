@@ -49,7 +49,7 @@ namespace PrantiksmeApp.Models.IdentityModels
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "Email/ User Name")]
         //[EmailAddress]
         public string Email { get; set; }
 

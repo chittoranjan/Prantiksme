@@ -9,6 +9,7 @@ using System.Web.Routing;
 using AutoMapper;
 using PrantiksmeApp.Models.EntityModels;
 using PrantiksmeApp.Models.ViewModels.ProprietorViewModels;
+using PrantiksmeApp.Models.ViewModels.SalesStoreViewModels;
 
 namespace PrantiksmeApp
 {
@@ -24,7 +25,11 @@ namespace PrantiksmeApp
 
             Mapper.Initialize(cfg =>
             {
+                //cfg.CreateMap<Source, Destination>();
+
                 cfg.CreateMap<ProprietorCreateVm, Employee>();
+
+                cfg.CreateMap<SalesStoreCreateVm, SalesStore>();
             });
         }
     }

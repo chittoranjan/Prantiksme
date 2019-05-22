@@ -6,35 +6,31 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using Microsoft.AspNet.Identity;
 using PrantiksmeApp.BLL.Contracts;
 using PrantiksmeApp.Models.Context;
 using PrantiksmeApp.Models.EntityModels;
 using PrantiksmeApp.Models.IdentityModels;
 using PrantiksmeApp.Models.Utilities;
-using PrantiksmeApp.Models.ViewModels.StoreRegistrationViewModels;
+using PrantiksmeApp.Models.ViewModels.SalesStoreViewModels;
 
-namespace PrantiksmeApp.Controllers.StoreRegistration
+
+namespace PrantiksmeApp.Controllers.SaleStore
 {
-    public class StoreRegistrationController : Controller
+    public class SalesStoresController : Controller
     {
         private ISalesStoreManager _salesStoreManager;
         private IEmployeeManager _employeeManager;
-        //private ApplicationUserManager _applicationUserManager;
-        private IGenderManager _genderManager;
-        private IAppUserTypeManager _appUserTypeManager;
         private ApplicationUtility _applicationUtility;
 
  
-        public StoreRegistrationController(ISalesStoreManager salesStoreManager,IEmployeeManager employeeManager,ApplicationUserManager applicationUserManager,
-            IGenderManager genderManager,IAppUserTypeManager appUserTypeManager,ApplicationUtility applicationUtility)
+        public SalesStoresController(ISalesStoreManager salesStoreManager,IEmployeeManager employeeManager,ApplicationUtility applicationUtility)
         {
-           // this._applicationUserManager = applicationUserManager;
+          
             this._salesStoreManager = salesStoreManager;
             this._employeeManager = employeeManager;
-            this._genderManager = genderManager;
-            this._appUserTypeManager = appUserTypeManager;
-            this._applicationUtility = applicationUtility;
+           this._applicationUtility = applicationUtility;
         }
         // GET: StoreRegistration
         public ActionResult Index()
@@ -61,12 +57,7 @@ namespace PrantiksmeApp.Controllers.StoreRegistration
         // GET: StoreRegistration/Create
         public ActionResult Create()
         {
-            var model = new StoreRegistrationCreateVm()
-            {
-                GenderLookUp = _applicationUtility.GetGenderSelectListItems(),
-                AppUserTypeLookUp = _applicationUtility.GetAppUserTypeSelectListItems(),
-            };
-
+           var model=new SalesStoreCreateVm();
             return View(model);
         }
 
@@ -75,14 +66,36 @@ namespace PrantiksmeApp.Controllers.StoreRegistration
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( StoreRegistrationCreateVm storeRegistrationCreateVm)
+        public ActionResult Create( SalesStoreCreateVm model)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return View(storeRegistrationCreateVm);
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var userId=User.Identity.GetUserId();
+
+                SalesStore salesStore = Mapper.Map<SalesStore>(model);
+                salesStore.CreatedBy = Convert.ToInt64(userId);
+                salesStore.CreatedOn=DateTime.Now;
+                salesStore.ProprietorId = 2;
+                var result = _salesStoreManager.Add(salesStore);
+                if (result)
+                {
+                    return RedirectToAction("Create","SalesStores");
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+               
             }
 
-            return View(storeRegistrationCreateVm);
+            return View(model);
+
         }
 
         // GET: StoreRegistration/Edit/5
@@ -143,20 +156,20 @@ namespace PrantiksmeApp.Controllers.StoreRegistration
 
         #region EXISTING CHECK
 
-        public JsonResult IsNiDExist(string nidNo, string initNidNo)
+        public JsonResult IsTradeLicenseNoExist(string tradeLicenseNo, string initTradeLicenseNo)
         {
-            if (string.IsNullOrEmpty(nidNo))
+            if (string.IsNullOrEmpty(tradeLicenseNo))
             {
-                throw new Exception("NID No Not Found !");
+                throw new Exception("Trade License No Not Found !");
             }
 
-            if (!string.IsNullOrEmpty(nidNo) && !string.IsNullOrEmpty(initNidNo) && nidNo.ToUpper().Equals(initNidNo.ToUpper()))
+            if (!string.IsNullOrEmpty(tradeLicenseNo) && !string.IsNullOrEmpty(initTradeLicenseNo) && tradeLicenseNo.ToUpper().Equals(initTradeLicenseNo.ToUpper()))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
 
             
-            var result = _employeeManager.Get(c => c.NIDNo.Equals(nidNo)).FirstOrDefault();
+            var result = _salesStoreManager.Get(c => c.TradeLicenseNo.Equals(tradeLicenseNo)).FirstOrDefault();
             return Json(result == null, JsonRequestBehavior.AllowGet);
         }
         public JsonResult IsContactNoExist(string contactNo, string initContactNo)
@@ -171,41 +184,10 @@ namespace PrantiksmeApp.Controllers.StoreRegistration
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
            
-            var result = _employeeManager.Get(c => c.ContactNo.Equals(contactNo)).FirstOrDefault();
+            var result = _salesStoreManager.Get(c => c.ContactNo.Equals(contactNo)).FirstOrDefault();
             return Json(result == null, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult IsEmailExist(string email, string initEmail)
-        {
-            if (string.IsNullOrEmpty(email))
-            {
-                throw new Exception("Email Not Found !");
-            }
-
-            if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(initEmail) && email.ToUpper().Equals(initEmail.ToUpper()))
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
-            var result = _employeeManager.Get(c => c.Email.Equals(email)).FirstOrDefault();
-            return Json(result == null, JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult IsUserNameExist(string userName, string initUserName)
-        {
-            if (string.IsNullOrEmpty(userName))
-            {
-                throw new Exception("User Name Not Found !");
-            }
-
-            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(initUserName) && userName.ToUpper().Equals(initUserName.ToUpper()))
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
-
-            //var result = _applicationUserManager.FindByName(userName);
-            var result = "";
-            return Json(result == null, JsonRequestBehavior.AllowGet);
-        }
         #endregion
     }
 }
