@@ -116,10 +116,12 @@ namespace PrantiksmeApp.Controllers.Proprietor
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(ProprietorCreateVm model)
         {
-            model.GenderLookUp = _applicationUtility.GetGenderSelectListItems();
-            model.AppUserTypeLookUp = _applicationUtility.GetAppUserTypeSelectListItems();
+
             try
             {
+                model.GenderLookUp = _applicationUtility.GetGenderSelectListItems();
+                model.AppUserTypeLookUp = _applicationUtility.GetAppUserTypeSelectListItems();
+
                 if (ModelState.IsValid)
                 {
                     RegisterViewModel registerViewModel = model.GetUserCreateModel();

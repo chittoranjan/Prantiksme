@@ -1,11 +1,9 @@
 ﻿
-/*Layout custom CSS start*/
+
+/*===============Layout custom CSS start======================*/
+
 .btn-size {
     width: 75px;
-}
-.col-wide {
-    width: 100%;
-    padding: 0 15px;
 }
 
 .postdiv {
@@ -56,10 +54,23 @@ input, select, textarea {
         border-radius: 5px;
     }
 
-/*Layout custom CSS end*/
+/*================Layout custom CSS end=====================*/
 
 
-/*Jquery date picker custom CSS start*/
+/*================Media Scrine CSS Start====================*/
+
+@media screen and (max-width: 992px) {
+    .col-wide {
+        width: 100%;
+        padding: 0 15px;
+    }
+}
+
+/*================Media Scrine CSS End====================*/
+
+
+/*==============Jquery date picker custom CSS start=================*/
+
 .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
     width: 100% !important;
 }
@@ -68,4 +79,4 @@ input, select, textarea {
     width: auto;
 }*/
 
-/*Jquery date picker custom CSS end*/
+/*===============Jquery date picker custom CSS end===================*/

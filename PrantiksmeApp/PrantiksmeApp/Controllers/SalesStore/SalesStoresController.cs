@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using PrantiksmeApp.BLL.Contracts;
+using PrantiksmeApp.Controllers.Base;
 using PrantiksmeApp.Models.Context;
 using PrantiksmeApp.Models.EntityModels;
 using PrantiksmeApp.Models.IdentityModels;
@@ -18,7 +19,7 @@ using PrantiksmeApp.Models.ViewModels.SalesStoreViewModels;
 
 namespace PrantiksmeApp.Controllers.SaleStore
 {
-    public class SalesStoresController : Controller
+    public class SalesStoresController : BaseController
     {
         private ISalesStoreManager _salesStoreManager;
         private IEmployeeManager _employeeManager;
@@ -74,10 +75,10 @@ namespace PrantiksmeApp.Controllers.SaleStore
                 {
                     return View(model);
                 }
-                var userId=User.Identity.GetUserId();
-
+                
+                var userId = GetUserId();
                 SalesStore salesStore = Mapper.Map<SalesStore>(model);
-                salesStore.CreatedBy = Convert.ToInt64(userId);
+                salesStore.CreatedBy = userId;
                 salesStore.CreatedOn=DateTime.Now;
                 salesStore.ProprietorId = 2;
                 var result = _salesStoreManager.Add(salesStore);

@@ -7,12 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PrantiksmeApp.BLL.Contracts;
+using PrantiksmeApp.Controllers.Base;
 using PrantiksmeApp.Models.Context;
 using PrantiksmeApp.Models.EntityModels;
 
 namespace PrantiksmeApp.Controllers.TestController
 {
-    public class GendersController : Controller
+    public class GendersController : BaseController
     {
         private readonly IGenderManager _manager;
 
