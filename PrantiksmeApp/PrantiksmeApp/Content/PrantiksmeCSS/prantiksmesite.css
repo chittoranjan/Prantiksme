@@ -3,7 +3,10 @@
 .btn-size {
     width: 75px;
 }
-
+.col-wide {
+    width: 100%;
+    padding: 0 15px;
+}
 
 .postdiv {
     border: 1px solid #015B02;
