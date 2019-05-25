@@ -69,6 +69,91 @@ input, select, textarea {
 /*================Media Scrine CSS End====================*/
 
 
+/*================== Custom Dropdown Nav Start ==========================*/
+
+#header .links {
+    padding-top: 12pt;
+    font-size: 9pt;
+}
+
+ul #navmenu, ul.sub1, ul.sub2 {
+    list-style-type: none;
+}
+
+    ul#navmenu li {
+        min-width: 100px;
+        text-align: center;
+        position: relative;
+        float: left;
+        margin-right: 3px;
+    }
+
+    ul#navmenu a {
+        text-decoration: none;
+        display: block;
+        min-width: 100px;
+        line-height: 25px;
+        background-color: #FFF;
+        border: 1px solid #CCC;
+        border-radius: 5px;
+    }
+
+
+    ul#navmenu .sub1 a {
+        margin-top: 5px;
+    }
+
+    ul#navmenu .sub2 a {
+        margin-left: 5px;
+    }
+
+    ul#navmenu li:hover > a {
+        background-color: #FFF;
+    }
+
+    ul#navmenu li:hover a:hover {
+        background-color: #FFF;
+       
+    }
+
+    ul#navmenu ul.sub1 {
+        display: none;
+        position: absolute;
+        top: 26px;
+        left: 0px;
+    }
+
+    ul#navmenu ul.sub2 {
+        display: none;
+        position: absolute;
+        top: 0px;
+        left: 100px;
+    }
+
+    ul#navmenu li:hover .sub1, .sub2 {
+        display: block;
+    }
+
+    ul#navmenu .sub1 li:hover .sub2 {
+        display: block;
+    }
+
+.darrow {
+    font-size: 10pt;
+    position: absolute;
+    top: -14px;
+    right: 6px;
+}
+
+.rarrow {
+    font-size: 10pt;
+    position: absolute;
+    top: -10px;
+    right: 5px;
+}
+/*================== Custom Dropdown Nav End ==========================*/
+
+
 /*==============Jquery date picker custom CSS start=================*/
 
 .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
