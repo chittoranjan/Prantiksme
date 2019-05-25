@@ -15,21 +15,11 @@
 
     <!--Layout style start-->
     <link rel="stylesheet" href="~/assets/css/main.css" />
+
     <!--Layout style end-->
 
     @Styles.Render("~/project/css")
     @RenderSection("styles", required: false)
-    <style>
-        /*.dropdown-submenu {
-            position: relative;
-        }
-
-        .dropdown-submenu .dropdown-menu {
-            top: 0;
-            left: 100%;
-            margin-top: -1px;
-        }*/
-    </style>
 </head>
 
 <body class="single is-preload">
@@ -47,18 +37,35 @@
                     <li><a href="@Url.Action("Index","Home")">Home</a></li>
                     <li><a href="@Url.Action("About","Home")">About</a></li>
                     <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
-                   <li><a href="#">Setting</a><span class="darrow">&#9660;</span>
+                    <li>
+                        <a href="#">Setting</a><span class="darrow">&#9660;</span>
                         <ul class="sub1">
-                            <li><a href="#">Sales Store</a><span class="rarrow">&#9654;</span>
+                            <li>
+                                <a href="#">Registration</a><span class="rarrow">&#9654;</span>
                                 <ul class="sub2">
-                                    <li><a href="@Url.Action("Create","SalesStores")">Create</a></li>
-                                    <li><a href="@Url.Action("Index","SalesStores")">Search</a></li>
-                                    </ul>
+                                    <li><a href="@Url.Action("Register","Account")">Register</a></li>
+                                    <li><a href="@Url.Action("ForgotPassword","Account")">Forgot Password</a></li>
+                                </ul>
                             </li>
-                            <li><a href="#">Product</a><span class="rarrow">&#9654;</span>
+                            <li>
+                                <a href="#">Proprietor</a><span class="rarrow">&#9654;</span>
                                 <ul class="sub2">
-                                    <li><a href="@Url.Action("Create","SalesStores")">Create</a></li>
-                                    <li><a href="@Url.Action("Index","SalesStores")">Search</a></li>
+                                    <li><a href="@Url.Action("Create", "Proprietors")">Create</a></li>
+                                    <li><a href="@Url.Action("Index", "Proprietors")">Search</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Sales Store</a><span class="rarrow">&#9654;</span>
+                                <ul class="sub2">
+                                    <li><a href="@Url.Action("Create", "SalesStores")">Create</a></li>
+                                    <li><a href="@Url.Action("Index", "SalesStores")">Search</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Product</a><span class="rarrow">&#9654;</span>
+                                <ul class="sub2">
+                                    <li><a href="@Url.Action("Create", "SalesStores")">Create</a></li>
+                                    <li><a href="@Url.Action("Index", "SalesStores")">Search</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -100,36 +107,39 @@
             </section>
 
             <!-- Links -->
-            <section>
+            <section class="mediamenu">
                 <ul class="links">
                     <li><a href="@Url.Action("Index","Home")">Home</a></li>
                     <li><a href="@Url.Action("About","Home")">About</a></li>
                     <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
-                    <li><a href="@Url.Action("Index","Home")">Product</a></li>
-                    @*<li>
-                            <a href="#">
-                                <h3>Lorem ipsum</h3>
-                                <p>Feugiat tempus veroeros dolor</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <h3>Dolor sit amet</h3>
-                                <p>Sed vitae justo condimentum</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <h3>Feugiat veroeros</h3>
-                                <p>Phasellus sed ultricies mi congue</p>
-                            </a>
-                        </li>*@
+                    <li class="mediasub1">
+                        <a href="#">Register</a>
+                        <ul class="mediamenuitem">
+                            <li><a href="@Url.Action("Register","Account")">Register</a></li>
+                            <li><a href="@Url.Action("ForgotPassword","Account")">Forgot Password</a></li>
+                        </ul>
+                    </li>
+                    <li class="mediasub1">
+                        <a href="#">Proprietor</a>
+                        <ul class="mediamenuitem">
+                            <li><a href="@Url.Action("Create","Proprietors")">Create</a></li>
+                            <li><a href="@Url.Action("Index","Proprietors")">Search</a></li>
+                        </ul>
+                    </li>
+                    <li class="mediasub1">
+                        <a href="#">Sales Store</a>
+                        <ul class="mediamenuitem">
+                            <li><a href="@Url.Action("Create","SalesStores")">Create</a></li>
+                            <li><a href="@Url.Action("Index","SalesStores")">Search</a></li>
+                        </ul>
+                    </li>
+
 
                 </ul>
             </section>
 
             <!-- Actions -->
-            <section>
+            <section class="mediasubbtn">
                 @*<ul class="actions stacked">
                         <li><a href="#" class="button large fit">Log In</a></li>
                     </ul>*@
@@ -178,20 +188,20 @@
     <script src="~/assets/js/util.js"></script>
     <script src="~/assets/js/main.js"></script>
     <!--Layout script end-->
-<script>
-    $(document).ready(function () {
-        $('.dropdown-submenu a.test').on("click", function (e) {
-            $(this).next('ul').toggle();
-            e.stopPropagation();
-            e.preventDefault();
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-submenu a.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
         });
-    });
-</script>
+    </script>
     @Scripts.Render("~/project/js")
 
     @RenderSection("scripts", required: false)
 
-    
+
 </body>
 
 </html>

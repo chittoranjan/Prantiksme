@@ -3,6 +3,7 @@ var subDirectory = "/../../";
 
 
 $(document).ready(function () {
+    //Project JS
 
 
     //Date Picker Js Start-----------------

@@ -54,23 +54,36 @@ input, select, textarea {
         border-radius: 5px;
     }
 
+.btn-large {
+    width: 105px;
+   
+}
 /*================Layout custom CSS end=====================*/
 
 
-/*================Media Scrine CSS Start====================*/
+/*================Media Screen CSS Start====================*/
 
 @media screen and (max-width: 992px) {
     .col-wide {
         width: 100%;
         padding: 0 15px;
     }
+    .mediasubbtn ul li a {
+        margin-bottom: 5px;
+    }
 }
-
-/*================Media Scrine CSS End====================*/
+@media screen and (min-width: 992px) {
+  
+    /*.mediamenu {
+        display: none;
+    }*/
+}
+/*================Media Screen CSS End====================*/
 
 
 /*================== Custom Dropdown Nav Start ==========================*/
 
+/*Main Nav Start*/
 #header .links {
     padding-top: 12pt;
     font-size: 9pt;
@@ -151,11 +164,32 @@ ul #navmenu, ul.sub1, ul.sub2 {
     top: -10px;
     right: 5px;
 }
+/*Main Nav End*/
+
+/*Media Nav Start*/
+#menu > * {
+    padding: 2em;
+}
+#menu .mediamenu {
+    padding: 10px 32px;
+}
+#menu .mediamenu ul li {
+    margin: 0;
+    padding: 2pt;
+}
+.mediamenu ul {
+    list-style-type: none;
+}
+.mediasub1 ul.mediamenuitem {
+    display: none;
+}
+.mediasub1:hover .mediamenuitem {
+    display: inline-block;
+}
+/*Media Nav End*/
+
 /*================== Custom Dropdown Nav End ==========================*/
-
-
 /*==============Jquery date picker custom CSS start=================*/
-
 .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
     width: 100% !important;
 }
