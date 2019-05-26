@@ -25,7 +25,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
 
 
         private readonly IEmployeeManager _employeeManager;
-        private IGenderManager _genderManager;
+        private readonly IGenderManager _genderManager;
         private readonly IAppUserTypeManager _appUserTypeManager;
         private readonly ApplicationUtility _applicationUtility;
 
@@ -170,7 +170,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
         // GET: AppUserTypes/Edit/5
         public ActionResult Edit(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -200,7 +200,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
         // GET: AppUserTypes/Delete/5
         public ActionResult Delete(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -225,7 +225,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
 
         #region EXISTING CHECK
 
-        public JsonResult IsNiDExist(string nidNo, string initNidNo)
+        public JsonResult IsNIDNoExist(string nidNo, string initNidNo)
         {
             if (string.IsNullOrEmpty(nidNo))
             {

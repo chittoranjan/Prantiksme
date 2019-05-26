@@ -56,6 +56,7 @@ namespace PrantiksmeApp.Models.EntityModels
         [Required(ErrorMessage = "Gender Is Required.")]
         public int GenderId { get; set; }
 
+        [Required(ErrorMessage = "App User Type Is Required.")]
         public int AppUserTypeId { get; set; }
 
         [Required(ErrorMessage = "Code Is Required.")]

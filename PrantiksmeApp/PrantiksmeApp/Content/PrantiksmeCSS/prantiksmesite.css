@@ -117,7 +117,7 @@ ul #navmenu, ul.sub1, ul.sub2 {
     }
 
     ul#navmenu .sub2 a {
-        margin-left: 5px;
+        margin-left: 3px;
     }
 
     ul#navmenu li:hover > a {

@@ -102,7 +102,7 @@ namespace PrantiksmeApp.Controllers.SaleStore
         // GET: StoreRegistration/Edit/5
         public ActionResult Edit(long id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -132,7 +132,7 @@ namespace PrantiksmeApp.Controllers.SaleStore
         // GET: StoreRegistration/Delete/5
         public ActionResult Delete(long id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }

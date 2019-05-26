@@ -7,7 +7,7 @@ using PrantiksmeApp.Models.EntityModels;
 
 namespace PrantiksmeApp.Models.ViewModels.CustomerViewModels
 {
-    public class CustomerCreateVm:IAuditable,IAutoCode,IDeletable
+    public class CustomerCreateVm
     {
         public long Id { get; set; }
 

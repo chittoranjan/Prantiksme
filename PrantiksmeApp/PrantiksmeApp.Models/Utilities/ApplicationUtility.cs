@@ -39,21 +39,7 @@ namespace PrantiksmeApp.Models.Utilities
             };
             return items;
         }
-
-        public static long GetUserId()
-        {
-            var userId = 0;
-
-            return userId;
-        }
-
-        public static long GetProprietorId()
-        {
-            var proprietorId = 0;
-
-            return proprietorId;
-        }
-
+        
         #endregion
 
         #region Application Method
@@ -69,6 +55,13 @@ namespace PrantiksmeApp.Models.Utilities
         public IEnumerable<SelectListItem> GetAppUserTypeSelectListItems()
         {
             var dataList = _db.AppUserTypes.ToList();
+            var createList = GetDefaultSelectListItem();
+            createList.AddRange(dataList.Select(item => new SelectListItem() { Value = item.Id.ToString(), Text = item.Name }));
+            return createList;
+        }
+        public IEnumerable<SelectListItem> GetSalesStoreSelectListItems()
+        {
+            var dataList = _db.SalesStores.ToList();
             var createList = GetDefaultSelectListItem();
             createList.AddRange(dataList.Select(item => new SelectListItem() { Value = item.Id.ToString(), Text = item.Name }));
             return createList;

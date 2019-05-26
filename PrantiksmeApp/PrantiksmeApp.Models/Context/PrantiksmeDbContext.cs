@@ -87,6 +87,10 @@ namespace PrantiksmeApp.Models.Context
 
 
         #endregion
+
+        public System.Data.Entity.DbSet<PrantiksmeApp.Models.ViewModels.EmployeeCreateVm> EmployeeCreateVms { get; set; }
+
+        public System.Data.Entity.DbSet<PrantiksmeApp.Models.IdentityModels.ApplicationUser> ApplicationUsers { get; set; }
     }
 
 }
