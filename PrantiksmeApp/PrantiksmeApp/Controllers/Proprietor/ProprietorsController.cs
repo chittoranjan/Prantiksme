@@ -68,8 +68,11 @@ namespace PrantiksmeApp.Controllers.Proprietor
 
 
         #endregion
-        // GET: AppUserTypes
-        public ActionResult Index()
+
+        #region All Action
+
+        // GET: Proprietors
+        public ActionResult Search()
         {
             try
             {
@@ -83,22 +86,24 @@ namespace PrantiksmeApp.Controllers.Proprietor
 
         }
 
-        // GET: AppUserTypes/Details/5
+        // GET: Proprietor/Details/5
         public ActionResult Details(int id)
         {
             if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AppUserType appUserType = _appUserTypeManager.GetById(id);
-            if (appUserType == null)
+            var proprietor = _employeeManager.GetById(id);
+            if (proprietor == null)
             {
                 return HttpNotFound();
             }
-            return View(appUserType);
+
+            var model = Mapper.Map<ProprietorDetailsVm>(proprietor);
+            return View(model);
         }
 
-        // GET: AppUserTypes/Create
+        // GET: Proprietor/Create
         public ActionResult Create()
         {
             var model = new ProprietorCreateVm()
@@ -110,9 +115,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
             return View(model);
         }
 
-        // POST: AppUserTypes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Proprietor/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(ProprietorCreateVm model)
@@ -123,53 +126,54 @@ namespace PrantiksmeApp.Controllers.Proprietor
                 model.GenderLookUp = _applicationUtility.GetGenderSelectListItems();
                 model.AppUserTypeLookUp = _applicationUtility.GetAppUserTypeSelectListItems();
 
-                if (ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
-                    RegisterViewModel registerViewModel = model.GetUserCreateModel();
-                    Employee employee = Mapper.Map<Employee>(model);
-
-                    var user = new ApplicationUser { UserName = registerViewModel.UserName, Email = registerViewModel.Email };
-                    var result = await UserManager.CreateAsync(user, registerViewModel.Password);
-                    if (result.Succeeded)
-                    {
-                        var userId = user.Id;
-                        employee.AppUserId = userId;
-                        employee.CreatedOn = DateTime.Now;
-                        employee.CreatedBy = userId;
-
-                        if (!string.IsNullOrEmpty(model.SDateOfBirth))
-                        {
-                            employee.DateOfBirth = Models.Utilities.Utility.GetDate(model.SDateOfBirth);
-                        }
-                        if (!string.IsNullOrEmpty(model.SJoiningDate))
-                        {
-                            employee.DateOfBirth = Models.Utilities.Utility.GetDate(model.SJoiningDate);
-                        }
-
-                        var result1 = _employeeManager.Add(employee);
-                        if (result1)
-                        {
-                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                            return RedirectToAction("Index", "Home");
-                        }
-
-                    }
-
-                    return RedirectToAction("Index");
+                    return View(model);
                 }
 
+                RegisterViewModel registerViewModel = model.GetUserCreateModel();
+                Employee employee = Mapper.Map<Employee>(model);
+
+                var user = new ApplicationUser { UserName = registerViewModel.UserName, Email = registerViewModel.Email };
+                var result = await UserManager.CreateAsync(user, registerViewModel.Password);
+
+                if (result.Succeeded)
+                {
+                    var userId = user.Id;
+                    employee.AppUserId = userId;
+                    employee.CreatedOn = DateTime.Now;
+                    employee.CreatedBy = userId;
+
+                    if (!string.IsNullOrEmpty(model.SDateOfBirth))
+                    {
+                        employee.DateOfBirth = Models.Utilities.Utility.GetDate(model.SDateOfBirth);
+                    }
+                    if (!string.IsNullOrEmpty(model.SJoiningDate))
+                    {
+                        employee.DateOfBirth = Models.Utilities.Utility.GetDate(model.SJoiningDate);
+                    }
+
+                    var result1 = _employeeManager.Add(employee);
+                    if (result1)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                }
+                return View(model);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                var ex = Models.Utilities.ApplicationUtility.GetExceptionMessage(e);
+                return View("Error", new HandleErrorInfo(ex, "Proprietors", "Create"));
             }
 
-            return View(model);
+
         }
 
-        // GET: AppUserTypes/Edit/5
+        // GET: Proprietor/Edit/5
         public ActionResult Edit(int id)
         {
             if (id == 0)
@@ -184,9 +188,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
             return View(appUserType);
         }
 
-        // POST: AppUserTypes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Proprietor/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(AppUserType appUserType)
@@ -199,7 +201,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
             return View(appUserType);
         }
 
-        // GET: AppUserTypes/Delete/5
+        // GET: Proprietor/Delete/5
         public ActionResult Delete(int id)
         {
             if (id == 0)
@@ -215,7 +217,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
             return View(appUserType);
         }
 
-        // POST: AppUserTypes/Delete/5
+        // POST: Proprietor/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -224,6 +226,9 @@ namespace PrantiksmeApp.Controllers.Proprietor
 
             return RedirectToAction("Index");
         }
+
+
+        #endregion
 
         #region EXISTING CHECK
 

@@ -162,6 +162,7 @@
     <Compile Include="Utilities\Utility.cs" />
     <Compile Include="ViewModels\CustomerViewModels\CustomerCreateVm.cs" />
     <Compile Include="ViewModels\EmployeeViewModels\EmployeeCreateVm.cs" />
+    <Compile Include="ViewModels\ProprietorViewModels\ProprietorDetailsVm.cs" />
     <Compile Include="ViewModels\ProprietorViewModels\ProprietorCreateVm.cs" />
     <Compile Include="ViewModels\SalesStoreViewModels\SalesStoreCreateVm.cs" />
   </ItemGroup>

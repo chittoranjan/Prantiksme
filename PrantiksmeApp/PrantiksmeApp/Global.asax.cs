@@ -28,6 +28,7 @@ namespace PrantiksmeApp
                 //cfg.CreateMap<Source, Destination>();
 
                 cfg.CreateMap<ProprietorCreateVm, Employee>();
+                cfg.CreateMap<Employee, ProprietorDetailsVm>();
 
                 cfg.CreateMap<SalesStoreCreateVm, SalesStore>();
             });

@@ -409,7 +409,7 @@
     <Content Include="Views\Proprietors\Delete.cshtml" />
     <Content Include="Views\Proprietors\Details.cshtml" />
     <Content Include="Views\Proprietors\Edit.cshtml" />
-    <Content Include="Views\Proprietors\Index.cshtml" />
+    <Content Include="Views\Proprietors\Search.cshtml" />
     <Content Include="Views\Employees\Create.cshtml" />
     <Content Include="Views\Employees\Delete.cshtml" />
     <Content Include="Views\Employees\Details.cshtml" />

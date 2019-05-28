@@ -196,7 +196,30 @@ namespace PrantiksmeApp.Models.Utilities
         //}
 
         #endregion
-            
+
+        #region Exception Handdleing
+
+        public static dynamic GetExceptionMessage(Exception e)
+        {
+            string errorMsg = e.Message;
+
+            if (e.InnerException != null)
+            {
+                errorMsg = e.InnerException.Message;
+            }
+            if (e.InnerException?.InnerException != null)
+            {
+                errorMsg = e.InnerException.InnerException.Message;
+            }
+            if (e.InnerException?.InnerException?.InnerException != null)
+            {
+                errorMsg = e.InnerException.InnerException.InnerException.Message;
+            }
+
+            return errorMsg;
+        }
+
+        #endregion
         #region Universal Code 
         public static string GetEmployeeUniversalCode()
         {

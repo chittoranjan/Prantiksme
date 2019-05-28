@@ -1,34 +1,141 @@
-﻿@model PrantiksmeApp.Models.EntityModels.AppUserType
+﻿@model PrantiksmeApp.Models.ViewModels.ProprietorViewModels.ProprietorDetailsVm
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="post postdiv">
+    <header class="headerdiv">
+        <div class="title titlediv">
+            <h2><span><a><i class="glyphicon glyphicon-hand-right"></i></a>&nbsp;</span><a href="#">Proprietor</a></h2>
 
-<div>
-    <h4>AppUserType</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+        </div>
+        <div class="meta metadiv">
+            <div class="row metarow">
+                <a href="#" title="User" data-toggle=""><i class="fa fa-user"></i></a>
+                <a href="#" title="Search" data-toggle=""><i class="fa fa-search"></i></a>
+                <a href="#" title="Setting" data-toggle=""><i class="fa fa-gear"></i></a>
+                <a href="#divCollapse" title="Collapse" data-toggle="collapse"><i class="fa fa-angle-double-down"></i></a>
+            </div>
+        </div>
+    </header>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+    <div id="divCollapse" class="collapse in text-justify maindiv ">
+        <div class="form-horizontal">
+            <h4> Proprietor Details:</h4>
+            <hr />
+            <div class="row">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </dt>
+                <div class="col-md-6 col-wide">
 
-        <dd>
-            @Html.DisplayFor(model => model.IsDeleted)
-        </dd>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8 display-text">
+                            @Html.DisplayTextFor(model => model.FullName)
 
-    </dl>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ContactNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8 display-text">
+                            @Html.DisplayTextFor(model => model.ContactNo)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8 display-text">
+                            @if (Model.DateOfBirth != null)
+                            {
+                                var date = (DateTime)Model.DateOfBirth;
+                                @date.ToString("dd-MMM-yyyy");
+                            }
+                            else
+                            {
+                                @Html.Label("N/ A")
+                            }
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.JoiningDate, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8 display-text">
+                            @if (Model.JoiningDate != null)
+                            {
+                                var date = (DateTime)Model.JoiningDate;
+                                @date.ToString("dd-MMM-yyyy");
+                            }
+                            else
+                            {
+                                @Html.Label("N/ A")
+                            }
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NIDNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8 display-text">
+                            @Html.DisplayTextFor(model => model.NIDNo)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UniversalCode, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8 display-text">
+                            @Html.DisplayTextFor(model => model.UniversalCode)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8 display-text">
+                            @Html.DisplayTextFor(model => model.Email)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8 display-text">
+                            @Html.DisplayTextFor(model => model.Address)
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-wide">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AppUserTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8 display-text">
+                            @Html.DisplayTextFor(model => model.AppUserType.Name)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GenderId, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8 display-text">
+                            @Html.DisplayTextFor(model => model.Gender.Name)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8 display-text">
+                            @Html.DisplayTextFor(model => model.AppUser.UserName)
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <hr />
+            <div class="form-group" align="right">
+                @Html.ActionLink("Edit", "Edit", "Proprietors", new { id = Model.Id }, new { @class = "btn btn-success btn-size" })
+                @Html.ActionLink("Search", "Search", "Proprietors", null, new { @class = "btn btn-info btn-size" })
+            </div>
+
+        </div>
+    </div>
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

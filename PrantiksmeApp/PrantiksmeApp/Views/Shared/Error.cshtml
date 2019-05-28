@@ -6,7 +6,7 @@
 <div class="post postdiv">
     <header class="headerdiv">
         <div class="title titlediv">
-            <h2><span><a><i class="glyphicon glyphicon-hand-right"></i></a>&nbsp;</span><a href="#">Error</a></h2>
+            <h2><span><a><i class="glyphicon glyphicon-hand-right"></i></a>&nbsp;</span><a href="#">Error!</a></h2>
 
         </div>
         <div class="meta metadiv">
@@ -22,6 +22,33 @@
     <div id="divCollapse" class="collapse in text-justify maindiv ">
         <h1 class="text-danger">Error.</h1>
         <h2 class="text-danger">An error occurred while processing your request.</h2>
+        @if (@ViewBag.ErrorMsg != null)
+        {
+            <br />
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Show Error</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Error Message :</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-danger" style="white-space: pre-line">@ViewBag.ErrorMsg</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
     </div>
 
 </div>

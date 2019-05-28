@@ -1,4 +1,21 @@
 ﻿
+.help-icon {
+    color: white !important;
+    font-weight: bolder !important;
+    background-color: #297734 !important;
+}
+
+.glyphicon-info-sign {
+    color: white !important;
+}
+.display-text {
+    color: black;
+    font-weight: bolder;
+    font-size: 14px;
+    text-align: left;
+    margin-top: 8px;
+    background-color: #ECF1EF;
+}
 
 /*===============Layout custom CSS start======================*/
 
@@ -58,11 +75,7 @@ input, select, textarea {
     width: 105px;
    
 }
-.help-icon {
-    color: white !important;
-    font-weight: bolder !important;
-    background-color: #297734 !important;
-}
+
 /*================Layout custom CSS end=====================*/
 
 
