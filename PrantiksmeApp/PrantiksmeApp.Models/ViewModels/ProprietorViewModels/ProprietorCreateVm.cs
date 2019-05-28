@@ -59,7 +59,7 @@ namespace PrantiksmeApp.Models.ViewModels.ProprietorViewModels
 
         [Display(Name = "NID No")]
         [RegularExpression(@"^((\d{10})|(\d{17}))$", ErrorMessage = "NID No Is Not Valid, Required '10 Or 17' Digit.")]
-        [Remote("IsNIDExist", "Proprietors", ErrorMessage = "NID No Already Exist.", AdditionalFields = "InitNidNo")]
+        [Remote("IsNIDNoExist", "Proprietors", ErrorMessage = "NID No Already Exist.", AdditionalFields = "InitNidNo")]
         public string NIDNo { get; set; }
 
         [Display(Name = "Address *")]

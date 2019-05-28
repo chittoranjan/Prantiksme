@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using PrantiksmeApp.Models.Contracts;
 using PrantiksmeApp.Models.EntityModels;
@@ -34,7 +35,7 @@ namespace PrantiksmeApp.Models.ViewModels
         [Display(Name = "Contact No *")]
         [Required(ErrorMessage = "Contact Number Required With '11' Digit.")]
         [RegularExpression(@"^(\d{11})$", ErrorMessage = "Contact Number Is Not Valid, Required '11' Digits.")]
-        [Remote("IsContactNoExist", "Home", ErrorMessage = "Contact No Already Exist.", AdditionalFields = "InitContactNo")]
+        [Remote("IsContactNoExist", "Employees", ErrorMessage = "Contact No Already Exist.", AdditionalFields = "InitContactNo")]
         public string ContactNo { get; set; }
 
         [Display(Name = "Date Of Birth")]
@@ -57,7 +58,7 @@ namespace PrantiksmeApp.Models.ViewModels
 
         [Display(Name = "NID No")]
         [RegularExpression(@"^((\d{10})|(\d{17}))$", ErrorMessage = "NID No Is Not Valid, Required '10 Or 17' Digit.")]
-        [Remote("IsNIDExist", "Home", ErrorMessage = "NID No Already Exist.", AdditionalFields = "InitNidNo")]
+        [Remote("IsNIDNoExist", "Employees", ErrorMessage = "NID No Already Exist.", AdditionalFields = "InitNidNo")]
         public string NIDNo { get; set; }
 
         [Display(Name = "Address")]
@@ -68,7 +69,7 @@ namespace PrantiksmeApp.Models.ViewModels
         [Display(Name = "Email")]
         [EmailAddress(ErrorMessage = "Invalid Email")]
         [StringLength(35,ErrorMessage = "Email Id Must Be 12 To 35 Char Long.",MinimumLength = 12)]
-        [Remote("IsEmailExist", "Home", ErrorMessage = "Email Already Exist.", AdditionalFields = "InitEmail")]
+        [Remote("IsEmailExist", "Employees", ErrorMessage = "Email Already Exist.", AdditionalFields = "InitEmail")]
         public string Email { get; set; }
 
         [Display(Name = "Photo")]
@@ -149,5 +150,9 @@ namespace PrantiksmeApp.Models.ViewModels
             };
             return model;
         }
+
+        [NotMapped]
+        [Display(Name = "Employee Photo")]
+        public HttpPostedFileBase EmployeePhoto { get; set; }
     }
 }

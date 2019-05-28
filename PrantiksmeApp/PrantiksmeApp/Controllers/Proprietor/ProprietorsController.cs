@@ -11,6 +11,7 @@ using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using PrantiksmeApp.BLL.Contracts;
+using PrantiksmeApp.Controllers.Base;
 using PrantiksmeApp.Models.Context;
 using PrantiksmeApp.Models.EntityModels;
 using PrantiksmeApp.Models.IdentityModels;
@@ -19,7 +20,7 @@ using PrantiksmeApp.Models.ViewModels.ProprietorViewModels;
 
 namespace PrantiksmeApp.Controllers.Proprietor
 {
-    public class ProprietorsController : Controller
+    public class ProprietorsController : BaseController
     {
         #region Configuration
 
@@ -85,7 +86,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
         // GET: AppUserTypes/Details/5
         public ActionResult Details(int id)
         {
-            if (id <= 0)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -135,6 +136,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
                         employee.AppUserId = userId;
                         employee.CreatedOn = DateTime.Now;
                         employee.CreatedBy = userId;
+
                         if (!string.IsNullOrEmpty(model.SDateOfBirth))
                         {
                             employee.DateOfBirth = Models.Utilities.Utility.GetDate(model.SDateOfBirth);

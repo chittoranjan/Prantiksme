@@ -58,6 +58,11 @@ input, select, textarea {
     width: 105px;
    
 }
+.help-icon {
+    color: white !important;
+    font-weight: bolder !important;
+    background-color: #297734 !important;
+}
 /*================Layout custom CSS end=====================*/
 
 
@@ -189,6 +194,8 @@ ul #navmenu, ul.sub1, ul.sub2 {
 /*Media Nav End*/
 
 /*================== Custom Dropdown Nav End ==========================*/
+
+
 /*==============Jquery date picker custom CSS start=================*/
 .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
     width: 100% !important;
