@@ -180,12 +180,25 @@ namespace PrantiksmeApp.Controllers.Proprietor
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AppUserType appUserType = _appUserTypeManager.GetById(id);
-            if (appUserType == null)
+            var proprietor = _employeeManager.GetById(id);
+            if (proprietor == null)
             {
                 return HttpNotFound();
             }
-            return View(appUserType);
+
+            var model = Mapper.Map<ProprietorEditVm>(proprietor);
+            if (model.DateOfBirth!=null)
+            {
+                model.SDateOfBirth = Models.Utilities.Utility.GetDate((DateTime)model.DateOfBirth);
+            }
+            if (model.JoiningDate != null)
+            {
+                model.SJoiningDate = Models.Utilities.Utility.GetDate((DateTime)model.JoiningDate);
+            }
+            model.GenderLookUp = _applicationUtility.GetGenderSelectListItems();
+            model.AppUserTypeLookUp = _applicationUtility.GetAppUserTypeSelectListItems();
+
+            return View(model);
         }
 
         // POST: Proprietor/Edit/5
