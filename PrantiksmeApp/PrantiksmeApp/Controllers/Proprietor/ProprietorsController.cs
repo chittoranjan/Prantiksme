@@ -204,14 +204,23 @@ namespace PrantiksmeApp.Controllers.Proprietor
         // POST: Proprietor/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(AppUserType appUserType)
+        public ActionResult Edit(ProprietorEditVm model)
         {
-            if (ModelState.IsValid)
+            try
             {
+                if (ModelState.IsValid)
+                {
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Search");
+                }
+                return View(model);
             }
-            return View(appUserType);
+            catch (Exception e)
+            {
+                var ex = Models.Utilities.ApplicationUtility.GetExceptionMessage(e);
+                return View("Error", new HandleErrorInfo(ex, "Proprietors", "Edit"));
+            }
+            
         }
 
         // GET: Proprietor/Delete/5
