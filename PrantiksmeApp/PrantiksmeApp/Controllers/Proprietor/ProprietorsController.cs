@@ -254,14 +254,14 @@ namespace PrantiksmeApp.Controllers.Proprietor
 
         #region EXISTING CHECK
 
-        public JsonResult IsNIDNoExist(string nidNo, string initNidNo)
+        public JsonResult IsNIDNoExist(string nidNo, string id)
         {
             if (string.IsNullOrEmpty(nidNo))
             {
                 throw new Exception("NID No Not Found !");
             }
 
-            if (!string.IsNullOrEmpty(nidNo) && !string.IsNullOrEmpty(initNidNo) && nidNo.ToUpper().Equals(initNidNo.ToUpper()))
+            if (!string.IsNullOrEmpty(nidNo) && !string.IsNullOrEmpty(id) && nidNo.ToUpper().Equals(id.ToUpper()))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
@@ -270,14 +270,14 @@ namespace PrantiksmeApp.Controllers.Proprietor
             var result = _employeeManager.Get(c => c.NIDNo.Equals(nidNo)).FirstOrDefault();
             return Json(result == null, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult IsContactNoExist(string contactNo, string initContactNo)
+        public JsonResult IsContactNoExist(string contactNo, string id)
         {
             if (string.IsNullOrEmpty(contactNo))
             {
                 throw new Exception("Contact Not Found !");
             }
 
-            if (!string.IsNullOrEmpty(contactNo) && !string.IsNullOrEmpty(initContactNo) && contactNo.ToUpper().Equals(initContactNo.ToUpper()))
+            if (!string.IsNullOrEmpty(contactNo) && !string.IsNullOrEmpty(id) && contactNo.ToUpper().Equals(id.ToUpper()))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
@@ -302,14 +302,14 @@ namespace PrantiksmeApp.Controllers.Proprietor
             return Json(result == null && result1 == null, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult IsUserNameExist(string userName, string initUserName)
+        public JsonResult IsUserNameExist(string userName, string id)
         {
             if (string.IsNullOrEmpty(userName))
             {
                 throw new Exception("User Name Not Found !");
             }
 
-            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(initUserName) && userName.ToUpper().Equals(initUserName.ToUpper()))
+            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(id) && userName.ToUpper().Equals(id.ToUpper()))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }

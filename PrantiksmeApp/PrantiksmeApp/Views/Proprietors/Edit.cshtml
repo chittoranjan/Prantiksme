@@ -10,7 +10,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+    @Html.HiddenFor(m=>m.Id)
     <div class="post postdiv">
         <header class="headerdiv">
             <div class="title titlediv">

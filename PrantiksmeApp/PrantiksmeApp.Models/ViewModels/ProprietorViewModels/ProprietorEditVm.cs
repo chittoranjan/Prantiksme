@@ -35,7 +35,7 @@ namespace PrantiksmeApp.Models.ViewModels.ProprietorViewModels
         [Display(Name = "Contact No *")]
         [Required(ErrorMessage = "Contact Number Required With '11' Digit.")]
         [RegularExpression(@"^(\d{11})$", ErrorMessage = "Contact Number Is Not Valid, Required '11' Digits.")]
-        [Remote("IsContactNoExist", "Proprietors", ErrorMessage = "Contact No Already Exist.", AdditionalFields = "InitContactNo")]
+        [Remote("IsContactNoExist", "Proprietors", ErrorMessage = "Contact No Already Exist.", AdditionalFields = "Id")]
         public string ContactNo { get; set; }
 
         [Display(Name = "Date Of Birth")]
@@ -59,7 +59,7 @@ namespace PrantiksmeApp.Models.ViewModels.ProprietorViewModels
 
         [Display(Name = "NID No")]
         [RegularExpression(@"^((\d{10})|(\d{17}))$", ErrorMessage = "NID No Is Not Valid, Required '10 Or 17' Digit.")]
-        [Remote("IsNIDNoExist", "Proprietors", ErrorMessage = "NID No Already Exist.", AdditionalFields = "InitNidNo")]
+        [Remote("IsNIDNoExist", "Proprietors", ErrorMessage = "NID No Already Exist.", AdditionalFields = "Id")]
         public string NIDNo { get; set; }
 
         [Display(Name = "Address *")]
@@ -70,7 +70,7 @@ namespace PrantiksmeApp.Models.ViewModels.ProprietorViewModels
         [Display(Name = "Email *")]
         [EmailAddress(ErrorMessage = "Invalid Email")]
         [StringLength(35, ErrorMessage = "Email Id Must Be 12 To 35 Char Long.", MinimumLength = 12)]
-        [Remote("IsEmailExist", "Proprietors", ErrorMessage = "Email Already Exist.", AdditionalFields = "InitEmail")]
+        [Remote("IsEmailExist", "Proprietors", ErrorMessage = "Email Already Exist.", AdditionalFields = "Id")]
         public string Email { get; set; }
 
         [Display(Name = "Photo")]
