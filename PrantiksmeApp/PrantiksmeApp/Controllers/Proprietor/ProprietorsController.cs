@@ -30,7 +30,8 @@ namespace PrantiksmeApp.Controllers.Proprietor
         private readonly IAppUserTypeManager _appUserTypeManager;
         private readonly ApplicationUtility _applicationUtility;
 
-        public ProprietorsController(IEmployeeManager employeeManager, IGenderManager genderManager, IAppUserTypeManager appUserTypeManager, ApplicationUtility applicationUtility)
+        public ProprietorsController(IEmployeeManager employeeManager, IGenderManager genderManager,
+            IAppUserTypeManager appUserTypeManager, ApplicationUtility applicationUtility)
         {
 
             this._employeeManager = employeeManager;
@@ -38,32 +39,21 @@ namespace PrantiksmeApp.Controllers.Proprietor
             this._appUserTypeManager = appUserTypeManager;
             this._applicationUtility = applicationUtility;
         }
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
 
         public ApplicationSignInManager SignInManager
         {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set
-            {
-                _signInManager = value;
-            }
+            get { return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>(); }
+            private set { _signInManager = value; }
         }
 
         public ApplicationUserManager UserManager
         {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
+            get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
+            private set { _userManager = value; }
         }
 
 
@@ -93,6 +83,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var proprietor = _employeeManager.GetById(id);
             if (proprietor == null)
             {
@@ -134,7 +125,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
                 RegisterViewModel registerViewModel = model.GetUserCreateModel();
                 Employee employee = Mapper.Map<Employee>(model);
 
-                var user = new ApplicationUser { UserName = registerViewModel.UserName, Email = registerViewModel.Email };
+                var user = new ApplicationUser {UserName = registerViewModel.UserName, Email = registerViewModel.Email};
                 var result = await UserManager.CreateAsync(user, registerViewModel.Password);
 
                 if (result.Succeeded)
@@ -148,6 +139,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
                     {
                         employee.DateOfBirth = Models.Utilities.Utility.GetDate(model.SDateOfBirth);
                     }
+
                     if (!string.IsNullOrEmpty(model.SJoiningDate))
                     {
                         employee.DateOfBirth = Models.Utilities.Utility.GetDate(model.SJoiningDate);
@@ -162,6 +154,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
                     }
 
                 }
+
                 return View(model);
             }
             catch (Exception e)
@@ -180,6 +173,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var proprietor = _employeeManager.GetById(id);
             if (proprietor == null)
             {
@@ -187,14 +181,16 @@ namespace PrantiksmeApp.Controllers.Proprietor
             }
 
             var model = Mapper.Map<ProprietorEditVm>(proprietor);
-            if (model.DateOfBirth!=null)
+            if (model.DateOfBirth != null)
             {
-                model.SDateOfBirth = Models.Utilities.Utility.GetDate((DateTime)model.DateOfBirth);
+                model.SDateOfBirth = Models.Utilities.Utility.GetDate((DateTime) model.DateOfBirth);
             }
+
             if (model.JoiningDate != null)
             {
-                model.SJoiningDate = Models.Utilities.Utility.GetDate((DateTime)model.JoiningDate);
+                model.SJoiningDate = Models.Utilities.Utility.GetDate((DateTime) model.JoiningDate);
             }
+
             model.GenderLookUp = _applicationUtility.GetGenderSelectListItems();
             model.AppUserTypeLookUp = _applicationUtility.GetAppUserTypeSelectListItems();
 
@@ -213,6 +209,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
 
                     return RedirectToAction("Search");
                 }
+
                 return View(model);
             }
             catch (Exception e)
@@ -220,7 +217,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
                 var ex = Models.Utilities.ApplicationUtility.GetExceptionMessage(e);
                 return View("Error", new HandleErrorInfo(ex, "Proprietors", "Edit"));
             }
-            
+
         }
 
         // GET: Proprietor/Delete/5
@@ -236,6 +233,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
             {
                 return HttpNotFound();
             }
+
             return View(appUserType);
         }
 
@@ -270,6 +268,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
             var result = _employeeManager.Get(c => c.NIDNo.Equals(nidNo)).FirstOrDefault();
             return Json(result == null, JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult IsContactNoExist(string contactNo, string id)
         {
             if (string.IsNullOrEmpty(contactNo))
@@ -277,7 +276,8 @@ namespace PrantiksmeApp.Controllers.Proprietor
                 throw new Exception("Contact Not Found !");
             }
 
-            if (!string.IsNullOrEmpty(contactNo) && !string.IsNullOrEmpty(id) && contactNo.ToUpper().Equals(id.ToUpper()))
+            if (!string.IsNullOrEmpty(contactNo) && !string.IsNullOrEmpty(id) &&
+                contactNo.ToUpper().Equals(id.ToUpper()))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
@@ -293,10 +293,12 @@ namespace PrantiksmeApp.Controllers.Proprietor
                 throw new Exception("Email Not Found !");
             }
 
-            if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(initEmail) && email.ToUpper().Equals(initEmail.ToUpper()))
+            if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(initEmail) &&
+                email.ToUpper().Equals(initEmail.ToUpper()))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
+
             var result = _employeeManager.Get(c => c.Email.Equals(email)).FirstOrDefault();
             var result1 = UserManager.FindByEmail(email);
             return Json(result == null && result1 == null, JsonRequestBehavior.AllowGet);
@@ -318,6 +320,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
 
             return Json(result == null, JsonRequestBehavior.AllowGet);
         }
+
         #endregion
     }
 }
