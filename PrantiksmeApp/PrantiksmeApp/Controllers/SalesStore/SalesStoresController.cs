@@ -1,23 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
-using Microsoft.AspNet.Identity;
 using PrantiksmeApp.BLL.Contracts;
 using PrantiksmeApp.Controllers.Base;
-using PrantiksmeApp.Models.Context;
-using PrantiksmeApp.Models.EntityModels;
-using PrantiksmeApp.Models.IdentityModels;
 using PrantiksmeApp.Models.Utilities;
 using PrantiksmeApp.Models.ViewModels.SalesStoreViewModels;
 
-
-namespace PrantiksmeApp.Controllers.SaleStore
+namespace PrantiksmeApp.Controllers.SalesStore
 {
     public class SalesStoresController : BaseController
     {
@@ -25,29 +16,25 @@ namespace PrantiksmeApp.Controllers.SaleStore
         private IEmployeeManager _employeeManager;
         private ApplicationUtility _applicationUtility;
 
- 
-        public SalesStoresController(ISalesStoreManager salesStoreManager,IEmployeeManager employeeManager,ApplicationUtility applicationUtility)
+
+        public SalesStoresController(ISalesStoreManager salesStoreManager, IEmployeeManager employeeManager, ApplicationUtility applicationUtility)
         {
-          
+
             this._salesStoreManager = salesStoreManager;
             this._employeeManager = employeeManager;
-           this._applicationUtility = applicationUtility;
+            this._applicationUtility = applicationUtility;
         }
         // GET: StoreRegistration
         public ActionResult Index()
         {
-            
+
             return View();
         }
 
         // GET: StoreRegistration/Details/5
         public ActionResult Details(long id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SalesStore salesStore = _salesStoreManager.GetById(id);
+            Models.EntityModels.SalesStore salesStore = _salesStoreManager.GetById(id);
             if (salesStore == null)
             {
                 return HttpNotFound();
@@ -58,7 +45,7 @@ namespace PrantiksmeApp.Controllers.SaleStore
         // GET: StoreRegistration/Create
         public ActionResult Create()
         {
-           var model=new SalesStoreCreateVm();
+            var model = new SalesStoreCreateVm();
             return View(model);
         }
 
@@ -67,7 +54,7 @@ namespace PrantiksmeApp.Controllers.SaleStore
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( SalesStoreCreateVm model)
+        public ActionResult Create(SalesStoreCreateVm model)
         {
             try
             {
@@ -75,16 +62,16 @@ namespace PrantiksmeApp.Controllers.SaleStore
                 {
                     return View(model);
                 }
-                
+
                 var userId = GetUserId();
-                SalesStore salesStore = Mapper.Map<SalesStore>(model);
+                Models.EntityModels.SalesStore salesStore = Mapper.Map<Models.EntityModels.SalesStore>(model);
                 salesStore.CreatedBy = userId;
-                salesStore.CreatedOn=DateTime.Now;
+                salesStore.CreatedOn = DateTime.Now;
                 salesStore.ProprietorId = 2;
                 var result = _salesStoreManager.Add(salesStore);
                 if (result)
                 {
-                    return RedirectToAction("Create","SalesStores");
+                    return RedirectToAction("Create", "SalesStores");
                 }
 
             }
@@ -92,7 +79,7 @@ namespace PrantiksmeApp.Controllers.SaleStore
             {
                 Console.WriteLine(e);
                 throw;
-               
+
             }
 
             return View(model);
@@ -106,7 +93,7 @@ namespace PrantiksmeApp.Controllers.SaleStore
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SalesStore salesStore = _salesStoreManager.GetById(id);
+            Models.EntityModels.SalesStore salesStore = _salesStoreManager.GetById(id);
             if (salesStore == null)
             {
                 return HttpNotFound();
@@ -119,7 +106,7 @@ namespace PrantiksmeApp.Controllers.SaleStore
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( SalesStore salesStore)
+        public ActionResult Edit(Models.EntityModels.SalesStore salesStore)
         {
             if (ModelState.IsValid)
             {
@@ -137,7 +124,7 @@ namespace PrantiksmeApp.Controllers.SaleStore
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            SalesStore salesStore = _salesStoreManager.GetById(id);
+            Models.EntityModels.SalesStore salesStore = _salesStoreManager.GetById(id);
             if (salesStore == null)
             {
                 return HttpNotFound();
@@ -150,7 +137,7 @@ namespace PrantiksmeApp.Controllers.SaleStore
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            SalesStore salesStore = _salesStoreManager.GetById(id);
+            Models.EntityModels.SalesStore salesStore = _salesStoreManager.GetById(id);
             var result = _salesStoreManager.Remove(salesStore);
             return RedirectToAction("Index");
         }
@@ -169,7 +156,7 @@ namespace PrantiksmeApp.Controllers.SaleStore
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
 
-            
+
             var result = _salesStoreManager.Get(c => c.TradeLicenseNo.Equals(tradeLicenseNo)).FirstOrDefault();
             return Json(result == null, JsonRequestBehavior.AllowGet);
         }
@@ -184,7 +171,7 @@ namespace PrantiksmeApp.Controllers.SaleStore
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
-           
+
             var result = _salesStoreManager.Get(c => c.ContactNo.Equals(contactNo)).FirstOrDefault();
             return Json(result == null, JsonRequestBehavior.AllowGet);
         }

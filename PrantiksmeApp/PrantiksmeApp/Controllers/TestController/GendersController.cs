@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using PrantiksmeApp.BLL.Contracts;
+﻿using PrantiksmeApp.BLL.Contracts;
 using PrantiksmeApp.Controllers.Base;
-using PrantiksmeApp.Models.Context;
 using PrantiksmeApp.Models.EntityModels;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace PrantiksmeApp.Controllers.TestController
 {
@@ -25,16 +18,12 @@ namespace PrantiksmeApp.Controllers.TestController
         // GET: Genders
         public ActionResult Index()
         {
-            return View(_manager.GetAll(withDeleted:false).ToList());
+            return View(_manager.GetAll(withDeleted: false).ToList());
         }
 
         // GET: Genders/Details/5
         public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Gender gender = _manager.GetById(id);
             if (gender == null)
             {
@@ -59,7 +48,7 @@ namespace PrantiksmeApp.Controllers.TestController
             if (ModelState.IsValid)
             {
                 _manager.Add(gender);
-                
+
                 return RedirectToAction("Index");
             }
 
@@ -69,10 +58,6 @@ namespace PrantiksmeApp.Controllers.TestController
         // GET: Genders/Edit/5
         public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Gender gender = _manager.GetById(id);
             if (gender == null)
             {
@@ -91,7 +76,7 @@ namespace PrantiksmeApp.Controllers.TestController
             if (ModelState.IsValid)
             {
                 _manager.Update(gender);
-               
+
                 return RedirectToAction("Index");
             }
             return View(gender);
@@ -100,10 +85,6 @@ namespace PrantiksmeApp.Controllers.TestController
         // GET: Genders/Delete/5
         public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Gender gender = _manager.GetById(id);
             if (gender == null)
             {
@@ -122,6 +103,6 @@ namespace PrantiksmeApp.Controllers.TestController
             return RedirectToAction("Index");
         }
 
-        
+
     }
 }

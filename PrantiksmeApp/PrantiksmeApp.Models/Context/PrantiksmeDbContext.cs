@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Web;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using PrantiksmeApp.Models.EntityModels;
 using PrantiksmeApp.Models.EntityModels.ProductModels;
 using PrantiksmeApp.Models.EntityModels.PurchaseModels;
 using PrantiksmeApp.Models.EntityModels.SalesModels;
 using PrantiksmeApp.Models.IdentityModels;
-using PrantiksmeApp.Models.Migrations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace PrantiksmeApp.Models.Context
 {
@@ -62,14 +57,14 @@ namespace PrantiksmeApp.Models.Context
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        public  DbSet<AppUserType> AppUserTypes{ get; set; }
+        public DbSet<AppUserType> AppUserTypes { get; set; }
 
-        
+
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductSubCategory> ProductSubCategories { get; set; }
         public DbSet<ProductItem> ProductItems { get; set; }
-        
-        
+
+
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<PurchaseDetails> PurchaseDetails { get; set; }
         public DbSet<StockSummary> StockSummaries { get; set; }
