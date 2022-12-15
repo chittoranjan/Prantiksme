@@ -270,7 +270,7 @@ namespace PrantiksmeApp.Controllers.Proprietor
         }
 
         public JsonResult IsContactNoExist(string contactNo, string id)
-        {
+                                {
             if (string.IsNullOrEmpty(contactNo))
             {
                 throw new Exception("Contact Not Found !");
